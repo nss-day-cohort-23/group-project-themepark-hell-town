@@ -1,0 +1,32 @@
+{
+  "name": "group-project-themepark-hell-town",
+  "version": "1.0.0",
+  "description": "As a team you will create a interactive map of a theme park. The park will include 8 areas with different attractions and events.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nss-day-cohort-23/group-project-themepark-hell-town.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nss-day-cohort-23/group-project-themepark-hell-town/issues"
+  },
+  "homepage": "https://github.com/nss-day-cohort-23/group-project-themepark-hell-town#readme",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.2.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "handlebars": "^4.0.11",
+    "hbsfy": "^2.8.1",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "matchdep": "^2.0.0"
+  }
+}
