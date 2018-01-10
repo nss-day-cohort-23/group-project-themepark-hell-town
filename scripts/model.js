@@ -1,12 +1,12 @@
 "use strict";
 const $ = require('jquery');
 
-//XHR request(s) for data
-module.exports.getAttractions = ()=>{
+//XHR request(s) for data, takes data section as parameter
+module.exports.getParkData = (section)=>{
    console.log('attractions incoming oh shiiiiiit!!!!');
    return new Promise((resolve, reject)=>{
       $.ajax({
-         url: "https://theme-park-project.firebaseio.com/attractions.json",
+         url: `https://theme-park-project.firebaseio.com/theme-park/${section}.json`,
          dataType: 'json'  
       })
       .done(data =>{
@@ -19,37 +19,8 @@ module.exports.getAttractions = ()=>{
    });
 };
 
-module.exports.getAreas = () => {
-   console.log('attractions incoming oh shiiiiiit!!!!');
-   return new Promise((resolve, reject) => {
-      $.ajax({
-         url: "https://theme-park-project.firebaseio.com/areas.json",
-         dataType: 'json'
-      })
-         .done(data => {
-            resolve(data);
-            console.log('data', data);
-         })
-         .fail(error => {
-            reject(error);
-         });
-   });
-};
+// module.exports.findAttractionsByHour=(data, hr)=>{
+//    for
+// }
 
-module.exports.getAttractionType = () => {
-   console.log('attractions incoming oh shiiiiiit!!!!');
-   return new Promise((resolve, reject) => {
-      $.ajax({
-         url: "https://theme-park-project.firebaseio.com/attraction_types.json",
-         dataType: 'json'
-      })
-         .done(data => {
-            resolve(data);
-            console.log('data', data);
-         })
-         .fail(error => {
-            reject(error);
-         });
-   });
-};
 
