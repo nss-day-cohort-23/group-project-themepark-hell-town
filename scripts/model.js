@@ -1,5 +1,4 @@
 "use strict";
-const $ = require('jquery');
 
 //XHR request(s) for data, takes data section as parameter
 module.exports.getParkData = (section)=>{

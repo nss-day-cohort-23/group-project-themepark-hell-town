@@ -1,5 +1,4 @@
 "use strict";
-const $ = require('jquery');
 
 // fill page w html content
 module.exports.populatePage=()=>{
