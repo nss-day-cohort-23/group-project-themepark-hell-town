@@ -20,7 +20,7 @@ module.exports.activateListeners = ()=>{
 
 
    //eventLstnr for 'current' btn
-
+      // $('current-attractions-button').click(searchAttractionsByHour);
 
    //eventLstnr for attraction cards
 
@@ -55,7 +55,13 @@ const searchAttractionsByArea = (e)=>{
 };
 
 const searchAttractionsByHour = (e)=>{
-      let hour = this.value; // might need to be .val()
+      let hour;
+      if($('time-selector').val() === 'not time selected'){
+            hour = new Date(); // convert this to an hour-like number
+      }else{
+            hour = this.value; // might need to be .val() also might need to be not 'this'
+      }
+
       model.getParkData('attractions')
           .then(attractions=>{
             model.retrieveAttractionsByHour(attractions, hour)
