@@ -15,7 +15,7 @@ module.exports.activateListeners = ()=>{
 
 
     //eventLstnr for time select
-    $('#subTime').click(searchAttractionsByTime);
+  $('#subTime').click(module.exports.searchAttractionsByTime); 
 
 
    //eventLstnr for 'current' btn
@@ -26,7 +26,7 @@ module.exports.activateListeners = ()=>{
 
 };
 
-const searchAttractionsByTime = () => {
+module.exports.searchAttractionsByTime = () => {
   let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
 

@@ -33,25 +33,6 @@ module.exports.printAreas = (areas)=>{
 };
 
 
-//populate side bar w/ clicked attractions
-module.exports.printAttractionsByArea = (attractionsArray)=>{
-   $('#descriptionArea').html('');
-
-   model.getParkData('attraction_types')
-      .then(types=>{
-         types.forEach(function(type){
-            attractionsArray.forEach(function(attraction){
-
-               if(attraction.type_id === type.id){
-                     $('#descriptionArea').append(`
-                        <p>${attraction.name} - <b>${type.name}</b></p>
-                     `);
-               }
-            });
-         });
-      });
-};
-
 //populate side bar w/ attractions by area
 module.exports.printAttractionsByArea = (attractionsArray)=>{
    $('#descriptionArea').html('');
