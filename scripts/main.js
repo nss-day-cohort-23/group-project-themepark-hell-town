@@ -7,14 +7,17 @@ const controller = require('./controller');
 //populate page w/ html 
 view.populatePage();
 
-// model.getParkData('areas') 
-//    .then(areas=>{
-//       view.printAreas(areas);
-//    })
+model.getParkData('areas') 
+   .then(areas=>{
+      view.printAreas(areas);
+   })
+   .then(()=>{
+      controller.activateListeners();
+   });
 
 // model.getParkData('attractions') 
 //    .then(attractions=>{
 //       view.printAttractionsByHour(attractions);
 //    })
 
-//controller.activateListeners();
+// controller.activateListeners();
