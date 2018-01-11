@@ -72,17 +72,17 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
 };
 
 //populate side bar w/ attractions by time
-module.exports.printAttractionsByTime = (attractionsArray)=>{
+module.exports.printAttractionsByTime = (arr)=>{
    $('#descriptionArea').html('');
 
-   model.getParkData('attractions')
-      .then(attractions=>{
-         attractions.forEach(function(attraction){
-            attractionsArray.forEach(function(attr){
+   model.getParkData('areas')
+      .then(areas=>{
+         areas.forEach(function(area){
+            arr.forEach(function(attraction){
 
-               if(attr.time === attraction.time){
+               if(attraction.area_id === area.id){
                      $('#descriptionArea').append(`
-                        <p>${attraction.name} - <b>${attr.name}</b></p>
+                        <p>${attraction.name} - <b>${area.name}</b></p>
                      `);
                }
             });

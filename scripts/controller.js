@@ -19,7 +19,8 @@ module.exports.activateListeners = ()=>{
 
 
    //eventLstnr for 'current' btn
-      // $('current-attractions-button').click(searchAttractionsByHour);
+    // $('current-attractions-button').click(searchAttractionsByHour);
+
 
    //eventLstnr for attraction cards
 
@@ -30,7 +31,6 @@ const searchAttractionsByTime = () => {
   let timeVal = model.formatTimes($('#time').val());
 
   model.getParkData('attractions')
-
     .then(attractions => {
       attractions.forEach((attraction) => {
         let attractionTimes = attraction.times;
@@ -44,7 +44,7 @@ const searchAttractionsByTime = () => {
         }
       });
       console.log(attractionSchedule);
-      // view.printAttractionsByTime(attractionSchedule);
+      view.printAttractionsByTime(attractionSchedule);
 
     });
 };
