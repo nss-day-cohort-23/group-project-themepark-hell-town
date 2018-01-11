@@ -1,5 +1,4 @@
 "use strict";
-
 const model = require('./model'); 
 
 
@@ -53,7 +52,7 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
       });
 };
 
-//populate side bar w/ attractions by time
+//populate side bar w/ attractions by area
 module.exports.printAttractionsByArea = (attractionsArray)=>{
    $('#descriptionArea').html('');
 
@@ -63,6 +62,25 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
             attractionsArray.forEach(function(attraction){
 
                if(attraction.type_id === type.id){
+                     $('#descriptionArea').append(`
+                        <p>${attraction.name} - <b>${type.name}</b></p>
+                     `);
+               }
+            });
+         });
+      });
+};
+
+//populate side bar w/ attractions by time
+module.exports.printAttractionsByTime = (attractionsArray)=>{
+   $('#descriptionArea').html('');
+
+   model.getParkData('attractions')
+      .then(attractions=>{
+         attractions.forEach(function(attraction){
+            attractionsArray.forEach(function(attr){
+
+               if(attr.time === attraction.time){
                      $('#descriptionArea').append(`
                         <p>${attraction.name} - <b>${type.name}</b></p>
                      `);
