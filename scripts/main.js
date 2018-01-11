@@ -6,6 +6,11 @@ const controller = require('./controller');
 
 //populate page w/ html 
 view.populatePage();
+model.getParkData('areas'); //test
+model.getParkData('attractions'); //test
+controller.searchAttractionsByArea();  //test
+
+
 
 // model.getParkData('areas') 
 //    .then(areas=>{
