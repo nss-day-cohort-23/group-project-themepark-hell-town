@@ -22,4 +22,8 @@ module.exports.getParkData = (section)=>{
 //    for
 // }
 
+module.exports.findAttractionsByArea=(data,id)=>{
+   // console.log(data, id);
+};
+
 

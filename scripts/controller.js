@@ -48,7 +48,28 @@ module.exports.activateListeners = ()=>{
 };
 
 
+const searchByName = (e)=>{
+   if(e.keyCode === 13){
+      // let searchInput = #.val();
+      model.getParkData('attractions')
+         .then(attractions=>{
+            // return model.findAreaByAttraction(attractions, searchInput);
+         })
+         .then(searchResults=>{
+            // return model.findAttractionsByArea(searchResults);
+         })
+         .then(attractionsArr=>{
+            // view.printAttractions(attractionsArr);
+         });
+   }
+};
 
+
+// let areaId = $(this).attr('id').match(/\d+/)[0];
+// model.getParkData('areas')
+//    .then(areas => {
+//       return model.findAttractionsByArea(areas, areaId);
+//    });
 
 
 
