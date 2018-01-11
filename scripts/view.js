@@ -26,7 +26,9 @@ module.exports.printAreas = (areas)=>{
 
 //populate side bar w/ current attractions
 module.exports.printAttractions = (attractionsArray)=>{
-
+  attractionsArray.forEach(function(attraction){
+    console.log('attraction: ', attraction);
+  });
 
 };
 
