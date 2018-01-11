@@ -18,12 +18,14 @@ module.exports.getParkData = (section)=>{
    });
 };
 
-// module.exports.findAttractionsByHour=(data, hr)=>{
-//    for
-// }
+// module.exports.retrieveAttractionsByHour=(attractions, hr)=>{
+   
+// };
 
-module.exports.findAttractionsByArea=(data,id)=>{
-   // console.log(data, id);
+module.exports.retrieveAttractionsByArea=(areas, id)=>{
+  console.log('id: ',id);
+  areas.forEach(function(value){
+    console.log('test', value);
+
+  });
 };
-
-

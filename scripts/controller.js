@@ -1,6 +1,7 @@
 "use strict";
 const $ = require('jquery');
 const model = require('./model'); 
+const view = require('./view');
 
 module.exports.activateListeners = ()=>{
    //eventLstnr for search bar
@@ -38,25 +39,34 @@ module.exports.activateListeners = ()=>{
             // model.getParkData('attractions');
       //    model.findAttractionsByHour(hour);
       // })
+   // $('searchInput').keyPress(searchAttractionsByName);
+
+
+   //eventLstnr for grid click
+   // change selector below to the grid/map container element
+      // $('document').click(searchAttractionsByArea);
+
+
+   //eventLstnr for time select
+      // $('time-selector').change(searchAttractionsByHour);
 
 
    //eventLstnr for 'current' btn
-
+      // $('current-attractions-button').click(searchAttractionsByHour);
 
    //eventLstnr for attraction cards
 
 };
 
-
-const searchByName = (e)=>{
+const searchAttractionsByName = (e)=>{
    if(e.keyCode === 13){
       // let searchInput = #.val();
       model.getParkData('attractions')
          .then(attractions=>{
-            // return model.findAreaByAttraction(attractions, searchInput);
+            // return model.retrieveAreaByAttraction(attractions, searchInput);
          })
          .then(searchResults=>{
-            // return model.findAttractionsByArea(searchResults);
+            // return model.retrieveAttractionsByArea(searchResults);
          })
          .then(attractionsArr=>{
             // view.printAttractions(attractionsArr);
@@ -64,13 +74,33 @@ const searchByName = (e)=>{
    }
 };
 
+const searchAttractionsByArea = (e)=>{
+   let id = e.target.id;
+   model.getParkData('areas')
+      .then(areas=>{
+      //   return model.retrieveAttractionsByArea(areas,id);
+      }) 
+      .then(attractionsArr => {
+            // view.printAttractions(attractionsArr);
+      });
+};
 
-// let areaId = $(this).attr('id').match(/\d+/)[0];
-// model.getParkData('areas')
-//    .then(areas => {
-//       return model.findAttractionsByArea(areas, areaId);
-//    });
+const searchAttractionsByHour = (e)=>{
+      let hour;
+      if($('time-selector').val() === 'no time selected/null'){
+            hour = new Date(); // convert this to an hour-like number
+      }else{
+            hour = this.value; // might need to be .val() also might need to be not 'this'
+      }
 
+      model.getParkData('attractions')
+          .then(attractions=>{
+            model.retrieveAttractionsByHour(attractions, hour)
+          .then(attractionsArr=>{
+            view.printAttractions(attractionsArr);
+          });
 
+      });
+};
 
 

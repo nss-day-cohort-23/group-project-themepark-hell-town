@@ -1,0 +1,14 @@
+#areaGrid{
+   display: grid;
+   grid-template-columns: 22% 22% 22%;
+   grid-template-rows: 9.5em 9.5em 9.5em;
+   text-align: center;
+   color: white;
+}
+.gridItem{
+   line-height: 9.5em;
+
+}
+#areaGrid #item5{
+   grid-column-start: 3;
+}
