@@ -82,7 +82,7 @@ module.exports.printAttractionsByTime = (attractionsArray)=>{
 
                if(attr.time === attraction.time){
                      $('#descriptionArea').append(`
-                        <p>${attraction.name} - <b>${type.name}</b></p>
+                        <p>${attraction.name} - <b>${attr.name}</b></p>
                      `);
                }
             });

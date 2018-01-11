@@ -26,34 +26,25 @@ module.exports.activateListeners = ()=>{
 };
 
 const searchAttractionsByTime = () => {
-  let timeArr = [];
+  let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
 
   model.getParkData('attractions')
 
     .then(attractions => {
-      attractions.forEach((at) => {
-        let AtTimes = at.times;
-        if (AtTimes) {
-          AtTimes.forEach((time) => {
-            let formTime = model.formatTimes(time);
-            console.log(at);
-             timeArr.push(formTime);
+      attractions.forEach((attraction) => {
+        let attractionTimes = attraction.times;
+        if (attractionTimes) {
+          attractionTimes.forEach((time) => {
+            let formattedTime = model.formatTimes(time);
+            if (+formattedTime - (+timeVal) <= 100 && +formattedTime - (+timeVal) >0){
+              attractionSchedule.push(attraction);
+            }
           });
         }
-
-      //   timeArr.forEach((time) =>{
-      //     if (+time - (+timeVal) <= 100){
-      //       console.log(time);
-      //       console.log(at);
-      //     }
-      // });
-
-    
-
       });
-      // console.log(timeVal);
-      // console.log(timeArr, 's this twice?');
+      console.log(attractionSchedule);
+      // view.printAttractionsByTime(attractionSchedule);
 
     });
 };
