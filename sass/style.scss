@@ -1,25 +1,49 @@
+body{
+   margin: 0 auto;
+   height: 100vh;
+}
+main{
+   margin: 0 2em;
+}
+
+
 // Nav styling
+.nav{
+   height: 3.5em;
+}
 .navItems{
    display: flex;
    list-style: none;
    justify-content: center;
+   padding: 0 2em;
+   margin: 0;
+   line-height: 3.5em;
 }
 .navItems li:nth-child(2){
    margin: auto;
 }
 #brand{
-   // margin-right: auto;
+   //
+}
+.searchIcon{
+   height: .76em;
 }
 
+
+//Content Wrap (description area/ grid map)
+.contentWrapper{
+
+}
 
 
 // Grid styling
 #areaGrid{
    display: grid;
-   grid-template-columns: 21% 21% 21%;
+   grid-template-columns: 33% 33% 33%;
    grid-template-rows: 9.5em 9.5em 9.5em;
    text-align: center;
    color: white;
+   padding-left: 5px;
 }
 .gridItem{
    line-height: 9.5em;
@@ -28,10 +52,26 @@
 #areaGrid #item5{
    grid-column-start: 3;
 }
+#item1{
+   border-top-left-radius: 20px;
+}
+#item3{
+   border-top-right-radius: 20px;
+}
+#item6{
+   border-bottom-left-radius: 20px;
+}
+#item8{
+   border-bottom-right-radius: 20px;
+}
 
 
-// discription are
+// discription area
 #descriptionArea{
-   height: 10em;
+   height: 28.4em;
+   overflow: scroll;
    border: 1px solid black;
+   width: 33.5%;
+   float: left;
+   border-radius: 19px;
 }

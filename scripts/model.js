@@ -1,5 +1,4 @@
 "use strict";
-const $ = require('jquery');
 
 //XHR request(s) for data, takes data section as parameter
 module.exports.getParkData = (section)=>{
@@ -10,7 +9,7 @@ module.exports.getParkData = (section)=>{
       })
       .done(data =>{
          resolve(data);
-        //  console.log('data',data);
+         // console.log('data',data);
 
       })
       .fail(error=>{
@@ -36,8 +35,13 @@ module.exports.retrieveAttractionsByArea=(attractions, id)=>{
       }
       
     });
-    console.log('attrationsArray', attractionsArray);
     resolve(attractionsArray);  
-
   });
 };
+
+
+// module.exports.retrieveTypesById=(types,id)=>{
+//    return new Promise((resolve, reject)=>{
+      
+//    })
+// }

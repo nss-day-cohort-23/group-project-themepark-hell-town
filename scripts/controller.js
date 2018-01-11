@@ -1,5 +1,4 @@
 "use strict";
-const $ = require('jquery');
 const model = require('./model'); 
 const view = require('./view');
 
@@ -47,10 +46,9 @@ const searchAttractionsByArea = (function(e){
       .then(attractions=>{
         model.retrieveAttractionsByArea(attractions,id)
       .then(attractionsArr => {
-              console.log('attractionsArr: ',attractionsArr);
-              // view.printAttractions(attractionsArr);
+         view.printAttractionsByArea(attractionsArr);
       }); 
-      });
+   });
 });
 
 const searchAttractionsByHour = (e)=>{
@@ -65,7 +63,7 @@ const searchAttractionsByHour = (e)=>{
           .then(attractions=>{
             model.retrieveAttractionsByHour(attractions, hour)
           .then(attractionsArr=>{
-            view.printAttractions(attractionsArr);
+            view.printAttractionsByHour(attractionsArr);
           });
 
       });
