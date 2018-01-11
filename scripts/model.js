@@ -10,7 +10,7 @@ module.exports.getParkData = (section)=>{
       })
       .done(data =>{
          resolve(data);
-         console.log('data',data);
+        //  console.log('data',data);
       })
       .fail(error=>{
          reject(error);
@@ -22,10 +22,21 @@ module.exports.getParkData = (section)=>{
    
 // };
 
-module.exports.retrieveAttractionsByArea=(areas, id)=>{
-  console.log('id: ',id);
-  areas.forEach(function(value){
-    console.log('test', value);
+module.exports.retrieveAttractionsByArea=(attractions, id)=>{
+  console.log('id: ',+id);
+  return new Promise((resolve, reject)=>{
+    let attractionsArray = [];
+    attractions.forEach(function(attraction){
+      // console.log('attraction.area_id',attraction.area_id);
+      if(attraction.area_id === +id){
+        // console.log('attraction: ', attraction);
+        attractionsArray.push(attraction);
+        // console.log('FUCKING WORKED');
+      }
+      
+    });
+    console.log('attrationsArray', attractionsArray);
+    resolve(attractionsArray);  
 
   });
 };
