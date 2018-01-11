@@ -3,7 +3,6 @@ const $ = require('jquery');
 
 //XHR request(s) for data, takes data section as parameter
 module.exports.getParkData = (section)=>{
-   console.log('attractions incoming oh shiiiiiit!!!!');
    return new Promise((resolve, reject)=>{
       $.ajax({
          url: `https://theme-park-project.firebaseio.com/theme-park/${section}.json`,

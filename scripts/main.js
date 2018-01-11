@@ -12,10 +12,13 @@ controller.searchAttractionsByArea();  //test
 
 
 
-// model.getParkData('areas') 
-//    .then(areas=>{
-//       view.printAreas(areas);
-//    })
+model.getParkData('areas') 
+   .then(areas=>{
+      view.printAreas(areas);
+   })
+   .then(()=>{
+      controller.activateListeners();
+   });
 
 // model.getParkData('attractions') 
 //    .then(attractions=>{
