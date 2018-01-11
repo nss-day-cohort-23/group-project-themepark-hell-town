@@ -28,7 +28,7 @@ module.exports.activateListeners = ()=>{
 
 };
 const searchAttractionsByTime = () => {
-  let timeArr = [];
+  let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
 
   model.getParkData('attractions')
@@ -39,23 +39,14 @@ const searchAttractionsByTime = () => {
         if (AtTimes) {
           AtTimes.forEach((time) => {
             let formTime = model.formatTimes(time);
-            console.log(at);
-             timeArr.push(formTime);
+            if (+formTime - (+timeVal) <= 100 && +formTime - (+timeVal) >0){
+              attractionSchedule.push(at);
+            }
           });
         }
-
-      //   timeArr.forEach((time) =>{
-      //     if (+time - (+timeVal) <= 100){
-      //       console.log(time);
-      //       console.log(at);
-      //     }
-      // });
-
-     
-
       });
-      // console.log(timeVal);
-      // console.log(timeArr, 's this twice?');
+      console.log(attractionSchedule);
+      // view.printAttractionsByTime(attractionSchedule);
 
     });
 };
