@@ -1,6 +1,5 @@
 "use strict";
 
-
 //XHR request(s) for data, takes data section as parameter
 module.exports.getParkData = (section)=>{
    return new Promise((resolve, reject)=>{

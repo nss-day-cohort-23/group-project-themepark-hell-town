@@ -1,5 +1,4 @@
 "use strict";
-
 const model = require('./model'); 
 const view = require('./view');
 let wicked = require('../wickedpicker.js');
@@ -12,27 +11,26 @@ module.exports.activateListeners = ()=>{
 
 
    //eventLstnr for grid click
-   // change selector below to the grid/map container element
-      $('.gridItem').click(searchAttractionsByArea);
+   $('.gridItem').click(searchAttractionsByArea);
 
 
-      $('#subTime').click(searchAttractionsByTime);
-   //eventLstnr for time select
-      // $('time-selector').change(searchAttractionsByHour);
+    //eventLstnr for time select
+    $('#subTime').click(searchAttractionsByTime);
 
 
    //eventLstnr for 'current' btn
-      // $('current-attractions-button').click(searchAttractionsByHour);
+    // $('current-attractions-button').click(searchAttractionsByHour);
+
 
    //eventLstnr for attraction cards
 
 };
+
 const searchAttractionsByTime = () => {
   let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
 
   model.getParkData('attractions')
-
     .then(attractions => {
       attractions.forEach((attraction) => {
         let attractionTimes = attraction.times;
@@ -46,7 +44,7 @@ const searchAttractionsByTime = () => {
         }
       });
       console.log(attractionSchedule);
-      // view.printAttractionsByTime(attractionSchedule);
+      view.printAttractionsByTime(attractionSchedule);
 
     });
 };
@@ -81,24 +79,5 @@ const searchAttractionsByArea = (function(e){
    });
 });
 
-const searchAttractionsByHour = (e)=>{
-
- console.log( 'is this getting hit?');
-      let hour;
-      if($('#time').val() === 'no time selected/null'){
-            hour = new Date(); // convert this to an hour-like number
-      }else{
-            hour = this.value; // might need to be .val() also might need to be not 'this'
-      }
-
-      model.getParkData('attractions')
-          .then(attractions=>{
-             model.retrieveAttractionsByHour(attractions, hour)
-          .then(attractionsArr=>{
-            view.printAttractionsByHour(attractionsArr);
-          });
-
-      });
-};
 
 
