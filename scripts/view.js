@@ -1,6 +1,7 @@
 "use strict";
 const model = require('./model'); 
 
+
 // fill page w html content
 module.exports.populatePage=()=>{
    let d = new Date();
@@ -71,3 +72,11 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
 };
 
  
+module.exports.highlightAreas = (list) =>{
+  for(let i = 1; i < 9; i++){
+    $(`#item${i}`).removeClass("highlight");
+  }
+  list.forEach( (area)=>{
+    $(`#item${area}`).addClass("highlight");
+  });
+};

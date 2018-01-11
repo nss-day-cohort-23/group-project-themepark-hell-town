@@ -4,7 +4,7 @@ const view = require('./view');
 
 module.exports.activateListeners = ()=>{
    //eventLstnr for search bar
-   // $('searchInput').keyPress(searchAttractionsByName);
+   $('#searchInput').keypress(searchAttractionsByName);
 
 
    //eventLstnr for grid click
@@ -25,18 +25,19 @@ module.exports.activateListeners = ()=>{
 
 const searchAttractionsByName = (e)=>{
    if(e.keyCode === 13){
-      // let searchInput = #.val();
+      let searchInput = $('#searchInput').val();
       model.getParkData('attractions')
          .then(attractions=>{
-            // return model.retrieveAreaByAttraction(attractions, searchInput);
-         })
+            model.retrieveAreaByAttraction(attractions, searchInput)
          .then(searchResults=>{
-            // return model.retrieveAttractionsByArea(searchResults);
-         })
-         .then(attractionsArr=>{
-            // view.printAttractions(attractionsArr);
-         });
-   }
+            let listOfAreasToHighlight = [];
+                  searchResults.forEach(function(attraction){
+                  listOfAreasToHighlight.push(attraction.area_id);
+               });
+            view.highlightAreas(listOfAreasToHighlight);
+      });
+   });
+}
 };
 
 const searchAttractionsByArea = (function(e){

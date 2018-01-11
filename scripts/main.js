@@ -19,7 +19,10 @@ model.getParkData('areas')
       controller.activateListeners();
    });
 
+
+// PRINT THE CURRENT ATTRACTIONS FOR THE CURRENT MACHINE TIME:
 // model.getParkData('attractions') 
 //    .then(attractions=>{
 //       view.printAttractionsByHour(attractions);
 //    })
+

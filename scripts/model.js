@@ -9,8 +9,6 @@ module.exports.getParkData = (section)=>{
       })
       .done(data =>{
          resolve(data);
-         // console.log('data',data);
-
       })
       .fail(error=>{
          reject(error);
@@ -18,22 +16,26 @@ module.exports.getParkData = (section)=>{
    });
 };
 
-// module.exports.retrieveAttractionsByHour=(attractions, hr)=>{
-   
-// };
+
+module.exports.retrieveAreaByAttraction=(attractions, searchInput)=>{
+  return new Promise((resolve, reject)=>{
+    let searchResults = [];
+    attractions.forEach(function(attraction){
+      if(attraction.name.toLowerCase().indexOf(searchInput.toLowerCase()) > -1){
+        searchResults.push(attraction);
+      }
+    });
+    resolve(searchResults);
+  });
+};
 
 module.exports.retrieveAttractionsByArea=(attractions, id)=>{
-  console.log('id: ',+id);
   return new Promise((resolve, reject)=>{
     let attractionsArray = [];
     attractions.forEach(function(attraction){
-      // console.log('attraction.area_id',attraction.area_id);
       if(attraction.area_id === +id){
-        // console.log('attraction: ', attraction);
         attractionsArray.push(attraction);
-        // console.log('FUCKING WORKED');
       }
-      
     });
     resolve(attractionsArray);  
   });
