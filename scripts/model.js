@@ -1,5 +1,5 @@
 "use strict";
-const $ = require('jquery');
+// const $ = require('jquery');
 
 //XHR request(s) for data, takes data section as parameter
 module.exports.getParkData = (section)=>{
@@ -11,7 +11,7 @@ module.exports.getParkData = (section)=>{
       })
       .done(data =>{
          resolve(data);
-         console.log('data',data);
+        //  console.log('data',data);
       })
       .fail(error=>{
          reject(error);
