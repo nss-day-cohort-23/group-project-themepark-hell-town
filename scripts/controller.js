@@ -34,13 +34,13 @@ const searchAttractionsByTime = () => {
   model.getParkData('attractions')
 
     .then(attractions => {
-      attractions.forEach((at) => {
-        let AtTimes = at.times;
-        if (AtTimes) {
-          AtTimes.forEach((time) => {
-            let formTime = model.formatTimes(time);
-            if (+formTime - (+timeVal) <= 100 && +formTime - (+timeVal) >0){
-              attractionSchedule.push(at);
+      attractions.forEach((attraction) => {
+        let attractionTimes = attraction.times;
+        if (attractionTimes) {
+          attractionTimes.forEach((time) => {
+            let formattedTime = model.formatTimes(time);
+            if (+formattedTime - (+timeVal) <= 100 && +formattedTime - (+timeVal) >0){
+              attractionSchedule.push(attraction);
             }
           });
         }
