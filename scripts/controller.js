@@ -3,7 +3,6 @@ const $ = require('jquery');
 const model = require('./model'); 
 const view = require('./view');
 
-
 module.exports.activateListeners = ()=>{
    //eventLstnr for search bar
    // $('searchInput').keyPress(searchAttractionsByName);
@@ -12,7 +11,6 @@ module.exports.activateListeners = ()=>{
    //eventLstnr for grid click
    // change selector below to the grid/map container element
       // $('document').click(searchAttractionsByArea);
-
 
 
    //eventLstnr for time select
@@ -56,7 +54,7 @@ const searchAttractionsByArea = (e)=>{
 
 const searchAttractionsByHour = (e)=>{
       let hour;
-      if($('time-selector').val() === 'not time selected'){
+      if($('time-selector').val() === 'no time selected/null'){
             hour = new Date(); // convert this to an hour-like number
       }else{
             hour = this.value; // might need to be .val() also might need to be not 'this'

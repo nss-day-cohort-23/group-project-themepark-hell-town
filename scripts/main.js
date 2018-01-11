@@ -22,4 +22,4 @@ controller.searchAttractionsByArea();  //test
 //       view.printAttractionsByHour(attractions);
 //    })
 
-//controller.activateListeners();
+controller.activateListeners();
