@@ -10,7 +10,7 @@ module.exports.getParkData = (section)=>{
       })
       .done(data =>{
          resolve(data);
-         console.log('data',data);
+         // console.log('data',data);
       })
       .fail(error=>{
          reject(error);

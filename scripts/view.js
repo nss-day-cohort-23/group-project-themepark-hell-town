@@ -3,8 +3,14 @@ const $ = require('jquery');
 
 // fill page w html content
 module.exports.populatePage=()=>{
-
-
+   $('.nav').append(`
+      <ul class='navItems'>
+         <li id='brand'>Hell Town</li>
+         <li>
+            <input id='searchInput' type="text">
+         </li>
+      </ul>
+   `);
 };
 
 //populate css grid w/ color coded areas
