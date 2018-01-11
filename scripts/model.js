@@ -10,8 +10,6 @@ module.exports.getParkData = (section)=>{
       })
       .done(data =>{
          resolve(data);
-        //  console.log('data',data);
-
       })
       .fail(error=>{
          reject(error);
@@ -19,9 +17,6 @@ module.exports.getParkData = (section)=>{
    });
 };
 
-// module.exports.retrieveAttractionsByHour=(attractions, hr)=>{
-   
-// };
 
 module.exports.retrieveAreaByAttraction=(attractions, searchInput)=>{
   return new Promise((resolve, reject)=>{

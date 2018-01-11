@@ -62,14 +62,6 @@ const searchAttractionsByHour = (e)=>{
             hour = this.value; // might need to be .val() also might need to be not 'this'
       }
 
-      model.getParkData('attractions')
-          .then(attractions=>{
-            model.retrieveAttractionsByHour(attractions, hour)
-          .then(attractionsArr=>{
-            view.printAttractions(attractionsArr);
-          });
-
-      });
 };
 
 
