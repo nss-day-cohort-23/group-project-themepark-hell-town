@@ -1,6 +1,10 @@
 "use strict";
+
 const model = require('./model'); 
 const view = require('./view');
+let wicked = require('../wickedpicker.js');
+
+$('#time').wickedpicker();
 
 module.exports.activateListeners = ()=>{
    //eventLstnr for search bar
@@ -12,6 +16,7 @@ module.exports.activateListeners = ()=>{
       $('.gridItem').click(searchAttractionsByArea);
 
 
+      $('#subTime').click(searchAttractionsByTime);
    //eventLstnr for time select
       // $('time-selector').change(searchAttractionsByHour);
 
@@ -22,6 +27,39 @@ module.exports.activateListeners = ()=>{
    //eventLstnr for attraction cards
 
 };
+const searchAttractionsByTime = () => {
+  let timeArr = [];
+  let timeVal = model.formatTimes($('#time').val());
+
+  model.getParkData('attractions')
+
+    .then(attractions => {
+      attractions.forEach((at) => {
+        let AtTimes = at.times;
+        if (AtTimes) {
+          AtTimes.forEach((time) => {
+            let formTime = model.formatTimes(time);
+            console.log(at);
+             timeArr.push(formTime);
+          });
+        }
+
+      //   timeArr.forEach((time) =>{
+      //     if (+time - (+timeVal) <= 100){
+      //       console.log(time);
+      //       console.log(at);
+      //     }
+      // });
+
+     
+
+      });
+      // console.log(timeVal);
+      // console.log(timeArr, 's this twice?');
+
+    });
+};
+
 
 const searchAttractionsByName = (e)=>{
    if(e.keyCode === 13){
@@ -45,7 +83,7 @@ const searchAttractionsByArea = (function(e){
       // console.log('id: ',id);
       model.getParkData('attractions')
       .then(attractions=>{
-        model.retrieveAttractionsByArea(attractions,id)
+         model.retrieveAttractionsByArea(attractions,id)
       .then(attractionsArr => {
          view.printAttractionsByArea(attractionsArr);
       }); 
@@ -53,8 +91,10 @@ const searchAttractionsByArea = (function(e){
 });
 
 const searchAttractionsByHour = (e)=>{
+
+ console.log( 'is this getting hit?');
       let hour;
-      if($('time-selector').val() === 'no time selected/null'){
+      if($('#time').val() === 'no time selected/null'){
             hour = new Date(); // convert this to an hour-like number
       }else{
             hour = this.value; // might need to be .val() also might need to be not 'this'
@@ -62,7 +102,7 @@ const searchAttractionsByHour = (e)=>{
 
       model.getParkData('attractions')
           .then(attractions=>{
-            model.retrieveAttractionsByHour(attractions, hour)
+             model.retrieveAttractionsByHour(attractions, hour)
           .then(attractionsArr=>{
             view.printAttractionsByHour(attractionsArr);
           });

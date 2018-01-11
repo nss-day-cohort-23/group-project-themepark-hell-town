@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Hell Town</title>
   <link rel='stylesheet' type='text/css' href='css/main.css'>
+  <link rel="stylesheet" href="wickedpicker.css">
+
 </head>
 
 <body>
@@ -16,6 +18,15 @@
 
   <main>
 
+
+    <input id="time" type="text" class="time ui-timepicker-input" autocomplete="off">
+    <button id='subTime'></button>
+    <div id='timeDiv'></div>
+
+
+    <button id="currentEventsBtn">Current</button>
+    <select name="" id="timeSelect">
+    </select>
     <div id="userSelects">
       <button id="currentEventsBtn">Current</button>
       <select name="" id="timeSelect">
@@ -35,7 +46,11 @@
   <footer>
   </footer>
 
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
   <script src='dist/bundle.js'></script>
+  
 </body>
 </html>
 

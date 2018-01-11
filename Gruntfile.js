@@ -3,7 +3,7 @@ module.exports = function(grunt){
     jshint: {
       files: ['scripts/**/*.js'],
       options: {
-        predef: ['document', 'console', 'alert'],
+        predef: ['document', 'console', 'alert', '$'],
         esnext: true,
         globalstrict: true,
         globals: {},
