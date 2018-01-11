@@ -1,5 +1,5 @@
 "use strict";
-const $ = require('jquery');
+// const $ = require('jquery');
 
 //XHR request(s) for data, takes data section as parameter
 module.exports.getParkData = (section)=>{
@@ -40,4 +40,22 @@ module.exports.retrieveAttractionsByArea=(attractions, id)=>{
     resolve(attractionsArray);  
 
   });
+};
+
+
+module.exports.formatTimes =  (time) => {
+  time = time .replace(/[\s]+/g, '');
+  if(time.slice(0,2)!= '12' && time.charAt(4) === 'P'){
+    if(time.charAt(1) == ':'){
+      time = '0' + time;
+    }
+    let firstDigs = time.slice(0,2);
+    let Added = parseInt(firstDigs)+12;
+    
+    time = Added + time.slice(3);
+    // console.log(time, 'in if');
+    // console.log(time);
+  }
+  let result = time.replace(/[^0-9]+/g, '');
+  return result;
 };
