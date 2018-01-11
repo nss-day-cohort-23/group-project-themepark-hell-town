@@ -33,3 +33,11 @@ module.exports.printAttractions = (attractionsArray)=>{
 };
 
  
+module.exports.highlightAreas = (list) =>{
+  for(let i = 1; i < 9; i++){
+    $(`#item${i}`).removeClass("highlight");
+  }
+  list.forEach( (area)=>{
+    $(`#item${area}`).addClass("highlight");
+  });
+};
