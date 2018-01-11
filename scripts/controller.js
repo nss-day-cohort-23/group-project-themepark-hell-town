@@ -23,8 +23,9 @@ module.exports.activateListeners = ()=>{
    
    //eventLstnr for grid click
    $('.gridItem').click(function(){
-      let id = $(this).attr('id');
+      let id = $(this).attr('id').match(/\d+/)[0];
       model.getParkData('areas');
+      console.log(id);
 //       .then(areas=>{
 //         return model.findAttractionsByArea(areas,id);
 //       }) 

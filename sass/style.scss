@@ -1,6 +1,22 @@
+// Nav styling
+.navItems{
+   display: flex;
+   list-style: none;
+   justify-content: center;
+}
+.navItems li:nth-child(2){
+   margin: auto;
+}
+#brand{
+   // margin-right: auto;
+}
+
+
+
+// Grid styling
 #areaGrid{
    display: grid;
-   grid-template-columns: 22% 22% 22%;
+   grid-template-columns: 21% 21% 21%;
    grid-template-rows: 9.5em 9.5em 9.5em;
    text-align: center;
    color: white;
@@ -11,4 +27,11 @@
 }
 #areaGrid #item5{
    grid-column-start: 3;
+}
+
+
+// discription are
+#descriptionArea{
+   height: 10em;
+   border: 1px solid black;
 }
