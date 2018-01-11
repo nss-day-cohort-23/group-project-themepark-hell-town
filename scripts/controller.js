@@ -47,10 +47,9 @@ const searchAttractionsByArea = (function(e){
       .then(attractions=>{
         model.retrieveAttractionsByArea(attractions,id)
       .then(attractionsArr => {
-            //   console.log('attractionsArr: ',attractionsArr);
-              // view.printAttractions(attractionsArr);
+         view.printAttractionsByArea(attractionsArr);
       }); 
-      });
+   });
 });
 
 const searchAttractionsByHour = (e)=>{
@@ -61,6 +60,14 @@ const searchAttractionsByHour = (e)=>{
             hour = this.value; // might need to be .val() also might need to be not 'this'
       }
 
+      model.getParkData('attractions')
+          .then(attractions=>{
+            model.retrieveAttractionsByHour(attractions, hour)
+          .then(attractionsArr=>{
+            view.printAttractionsByHour(attractionsArr);
+          });
+
+      });
 };
 
 

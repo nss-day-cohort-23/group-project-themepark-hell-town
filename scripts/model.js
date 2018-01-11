@@ -40,3 +40,10 @@ module.exports.retrieveAttractionsByArea=(attractions, id)=>{
     resolve(attractionsArray);  
   });
 };
+
+
+// module.exports.retrieveTypesById=(types,id)=>{
+//    return new Promise((resolve, reject)=>{
+      
+//    })
+// }
