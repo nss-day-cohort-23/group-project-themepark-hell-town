@@ -1,5 +1,4 @@
 "use strict";
-const $ = require('jquery');
 const model = require('./model'); 
 const view = require('./view');
 const controller = require('./controller');
@@ -20,9 +19,10 @@ model.getParkData('areas')
       controller.activateListeners();
    });
 
+
+// PRINT THE CURRENT ATTRACTIONS FOR THE CURRENT MACHINE TIME:
 // model.getParkData('attractions') 
 //    .then(attractions=>{
 //       view.printAttractionsByHour(attractions);
 //    })
 
-controller.activateListeners();

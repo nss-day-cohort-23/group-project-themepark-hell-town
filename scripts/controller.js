@@ -1,11 +1,10 @@
 "use strict";
-const $ = require('jquery');
 const model = require('./model'); 
 const view = require('./view');
 
 module.exports.activateListeners = ()=>{
    //eventLstnr for search bar
-   // $('searchInput').keyPress(searchAttractionsByName);
+   $('#searchInput').keypress(searchAttractionsByName);
 
 
    //eventLstnr for grid click
@@ -26,18 +25,19 @@ module.exports.activateListeners = ()=>{
 
 const searchAttractionsByName = (e)=>{
    if(e.keyCode === 13){
-      // let searchInput = #.val();
+      let searchInput = $('#searchInput').val();
       model.getParkData('attractions')
          .then(attractions=>{
-            // return model.retrieveAreaByAttraction(attractions, searchInput);
-         })
+            model.retrieveAreaByAttraction(attractions, searchInput)
          .then(searchResults=>{
-            // return model.retrieveAttractionsByArea(searchResults);
-         })
-         .then(attractionsArr=>{
-            // view.printAttractions(attractionsArr);
-         });
-   }
+            let listOfAreasToHighlight = [];
+                  searchResults.forEach(function(attraction){
+                  listOfAreasToHighlight.push(attraction.area_id);
+               });
+            view.highlightAreas(listOfAreasToHighlight);
+      });
+   });
+}
 };
 
 const searchAttractionsByArea = (function(e){
@@ -47,7 +47,7 @@ const searchAttractionsByArea = (function(e){
       .then(attractions=>{
         model.retrieveAttractionsByArea(attractions,id)
       .then(attractionsArr => {
-              console.log('attractionsArr: ',attractionsArr);
+            //   console.log('attractionsArr: ',attractionsArr);
               // view.printAttractions(attractionsArr);
       }); 
       });
@@ -61,14 +61,6 @@ const searchAttractionsByHour = (e)=>{
             hour = this.value; // might need to be .val() also might need to be not 'this'
       }
 
-      model.getParkData('attractions')
-          .then(attractions=>{
-            model.retrieveAttractionsByHour(attractions, hour)
-          .then(attractionsArr=>{
-            view.printAttractions(attractionsArr);
-          });
-
-      });
 };
 
 
