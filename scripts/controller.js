@@ -24,11 +24,6 @@ module.exports.activateListeners = ()=>{
      module.exports.searchAttractionsByTime();
    });
 
-   $('.attraction').click(function(){
-    console.log($(this).id, 'attrId');
-    console.log('hello');
-
-   });
 
    //click on attraction, get description
    $(document).on('click', ".attraction", function() {
