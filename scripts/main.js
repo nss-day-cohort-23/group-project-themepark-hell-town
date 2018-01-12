@@ -16,7 +16,7 @@ model.getParkData('areas')
    })
    .then(()=>{
       controller.searchAttractionsByTime();
-   });   
+   });    
 
 
 
