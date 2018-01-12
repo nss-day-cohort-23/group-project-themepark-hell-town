@@ -8,7 +8,9 @@ const controller = require('./controller');
 view.populatePage();
 // model.getParkData('areas'); //test
 // model.getParkData('attractions'); //test
-// controller.searchAttractionsByArea();  //test
+
+
+// controller.searchAttractionsByTime();  
 
 
 
