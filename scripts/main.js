@@ -21,7 +21,7 @@ model.getParkData('areas')
    })
    .then(()=>{
       controller.searchAttractionsByTime();
-   });
+   });   
 
 
 // PRINT THE CURRENT ATTRACTIONS FOR THE CURRENT MACHINE TIME:

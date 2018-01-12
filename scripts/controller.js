@@ -14,12 +14,15 @@ module.exports.activateListeners = ()=>{
    $('.gridItem').click(searchAttractionsByArea);
 
 
-    //eventLstnr for time select
-  $('#subTime').click(module.exports.searchAttractionsByTime); 
+   //eventLstnr for time select
+   $('#subTime').click(module.exports.searchAttractionsByTime); 
 
 
    //eventLstnr for 'current' btn
-    // $('current-attractions-button').click(searchAttractionsByHour);
+   $('#currentEventsBtn').click(function(){
+     $('#time').val(new Date().toLocaleTimeString([], { hour: "numeric", minute: "numeric"}));
+     module.exports.searchAttractionsByTime();
+   });
 
 
    //eventLstnr for attraction cards
