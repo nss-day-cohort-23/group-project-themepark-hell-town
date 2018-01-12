@@ -104,18 +104,20 @@ const searchAttractionsByType = function(){
     $(`#item${i}`).removeClass("highlight");
   }
   let typeNum = $(this).val();
-  model.getParkData('attractions')
-    .then(attractions=>{
-      return model.retrieveAttractionsByProp(attractions, typeNum, 'type_id'); 
-    })
-    .then(attractionsArr => {
-      view.printAttractionsByTime(attractionsArr);
-      let listToHighlight = [];
-      attractionsArr.forEach((attraction)=>{
-        listToHighlight.push(attraction.area_id);
+  if(typeNum !== ""){
+    model.getParkData('attractions')
+      .then(attractions=>{
+        return model.retrieveAttractionsByProp(attractions, typeNum, 'type_id'); 
+      })
+      .then(attractionsArr => {
+        view.printAttractionsByTime(attractionsArr);
+        let listToHighlight = [];
+        attractionsArr.forEach((attraction)=>{
+          listToHighlight.push(attraction.area_id);
+        });
+        view.highlightAreas(listToHighlight);
       });
-      view.highlightAreas(listToHighlight);
-    });
+  }
 };
 
 
