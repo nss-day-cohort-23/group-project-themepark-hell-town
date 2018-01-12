@@ -63,7 +63,7 @@ module.exports.printAttractionsByTime = (arr)=>{
                if(attraction.area_id === area.id){
                      $('#descriptionArea').append(`
                         <div class='attraction' id='${attraction.id}'>
-                        <p ${attraction.name} - <b>${area.name}</b></p>
+                        <p> ${attraction.name} - <b>${area.name}</b></p>
                         <p class='attrDescription' style='display:none'>${attraction.description}</p>
                         </div>
                      `);
