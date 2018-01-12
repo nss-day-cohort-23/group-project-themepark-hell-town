@@ -37,22 +37,22 @@ module.exports.printAreas = (areas)=>{
 module.exports.printAttractionsByArea = (attractionsArray)=>{
    $('#descriptionArea').html('');
    model.getParkData('attraction_types')
-      .then(types=>{
-         types.forEach(function(type){
-            attractionsArray.forEach(function(attraction){
-               if(attraction.type_id === type.id){
-                     $('#descriptionArea').append(`
-                     <div class='attraction' id='${attraction.id}'>
-                        <p>${attraction.name} - <b>${type.name}</b></p>
-                        <p class='attrDescription' style='display:none'>
-                       ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attraction.times + `</b>`: '') + `
-                       
-                       </p> </div>
-                     `);
-               }
-            });
-         });
-      });
+    .then(types=>{
+        types.forEach(function(type){
+          attractionsArray.forEach(function(attraction){
+            if(attraction.type_id === type.id){
+              $('#descriptionArea').append(`
+              <div class='attraction' id='${attraction.id}'>
+                <p>${attraction.name} - <b>${type.name}</b></p>
+                <p class='attrDescription' style='display:none'>
+                ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attraction.times + `</b>`: '') + `
+                
+                </p> </div>
+              `);
+            }
+        });
+        });
+    });
 };
 
 //populate side bar w/ attractions by time
