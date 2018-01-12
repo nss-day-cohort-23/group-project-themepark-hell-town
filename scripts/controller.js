@@ -23,8 +23,6 @@ module.exports.activateListeners = ()=>{
   
    //click on attraction, get description
    $(document).on('click', ".attraction", function() {
-     $("div.attraction").toggleClass('attractiontwo');
-
     $(this).find('.attrDescription').slideToggle();
     $('#descriptionArea').find('.attrDescription').not($(this).find('.attrDescription')).hide();
 
