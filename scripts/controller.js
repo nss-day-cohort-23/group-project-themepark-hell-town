@@ -76,6 +76,7 @@ const searchAttractionsByArea = function(e){
   for(let i = 1; i < 9; i++){
     $(`#item${i}`).removeClass("highlight");
   }
+  $(this).addClass("highlight");
   let id = $(this).attr('id').match(/\d+/)[0];
   model.getParkData('attractions')
     .then(attractions=>{
