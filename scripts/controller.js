@@ -24,6 +24,9 @@ module.exports.activateListeners = ()=>{
    //click on attraction, get description
    $(document).on('click', ".attraction", function() {
     $(this).find('.attrDescription').slideToggle();
+    $('#descriptionArea').find('.attrDescription').not($(this).find('.attrDescription')).hide();
+
+
   });
 
    //listnr for type select
@@ -45,7 +48,7 @@ module.exports.searchAttractionsByTime = () => {
         if (attractionTimes) {
           attractionTimes.forEach((time) => {
             let formattedTime = model.formatTimes(time);
-            if (+formattedTime - (+timeVal) <= 100 && +formattedTime - (+timeVal) >0){
+            if (+formattedTime - (+timeVal) <= 100 && +formattedTime - (+timeVal) >= 0){
               listToHighlight.push(attraction.area_id);
               attractionSchedule.push(attraction);
             }
