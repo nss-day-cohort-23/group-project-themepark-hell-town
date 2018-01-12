@@ -46,7 +46,6 @@ module.exports.searchAttractionsByTime = () => {
           attractionTimes.forEach((time) => {
             let formattedTime = model.formatTimes(time);
             if (+formattedTime - (+timeVal) <= 100 && +formattedTime - (+timeVal) >0){
-              console.log('attraction: ',attraction);
               listToHighlight.push(attraction.area_id);
               attractionSchedule.push(attraction);
             }
