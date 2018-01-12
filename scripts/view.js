@@ -43,7 +43,7 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
                if(attraction.type_id === type.id){
                      $('#descriptionArea').append(`
                      <div class='attraction' id='${attraction.id}'>
-                        <p>${attraction.name} - <b>${type.name}</b></p>
+                        <p><b>${attraction.name}</b> - <span>${type.name}</span></p>
                         <p class='attrDescription' style='display:none'>
                        ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attraction.times + `</b>`: '') + `
                        
@@ -66,7 +66,7 @@ module.exports.printAttractionsByTime = (arr)=>{
                if(attraction.area_id === area.id){
                      $('#descriptionArea').append(`
                         <div class='attraction' id='${attraction.id}'>
-                        <p> ${attraction.name} - <b>${area.name}</b></p>
+                        <p><b> ${attraction.name}</b> - <span style='color:#${area.colorTheme}'>${area.name}</span></p>
                         <p class='attrDescription' style='display:none'>${attraction.description}<br><br>
                         <b>Start Times: ${attraction.times}<b></p>
                         </div>
