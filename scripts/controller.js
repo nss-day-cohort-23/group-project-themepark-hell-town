@@ -20,15 +20,12 @@ module.exports.activateListeners = ()=>{
      $('#time').val(new Date().toLocaleTimeString([], { hour: "numeric", minute: "numeric"}));
      module.exports.searchAttractionsByTime();
    });
-
-
-
-   });
-
+  
    //click on attraction, get description
    $(document).on('click', ".attraction", function() {
     $(this).find('.attrDescription').slideToggle();
   });
+  
    //eventLstnr for attraction cards
 
    
