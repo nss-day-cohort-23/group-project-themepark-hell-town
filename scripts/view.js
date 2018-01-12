@@ -37,6 +37,7 @@ module.exports.printAreas = (areas)=>{
 module.exports.printAttractionsByArea = (attractionsArray)=>{
    $('#descriptionArea').html('');
    model.getParkData('attraction_types')
+
       .then(types=>{
          types.forEach(function(type){
             attractionsArray.forEach(function(attraction){
@@ -53,6 +54,7 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
             });
          });
       });
+
 };
 
 //populate side bar w/ attractions by time
@@ -66,11 +68,13 @@ module.exports.printAttractionsByTime = (arr)=>{
                if(attraction.area_id === area.id){
                      $('#descriptionArea').append(`
                         <div class='attraction' id='${attraction.id}'>
+
                         <p><b> ${attraction.name}</b> - <span style='color:#${area.colorTheme}'>${area.name}</span></p>
                         <p class='attrDescription' style='display:none'>${attraction.description}<br><br>
                         <b>Start Times: ${attraction.times}<b></p>
                         </div>
                      `);
+
                }
             });
          });
