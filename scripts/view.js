@@ -41,6 +41,7 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
          types.forEach(function(type){
             attractionsArray.forEach(function(attraction){
                if(attraction.type_id === type.id){
+                if(attraction.times){let attractionTimes = attraction.times.join(', ');}
                      $('#descriptionArea').append(`
                      <div class='attraction' id='${attraction.id}'>
                         <p>${attraction.name} - <b>${type.name}</b></p>
@@ -63,10 +64,8 @@ module.exports.printAttractionsByTime = (arr)=>{
          areas.forEach(function(area){
             arr.forEach(function(attraction){
                if(attraction.area_id === area.id){
-                let attractionTimes = attraction.times.join(', ');
-                // console.log(attractionTimes);
-                // let att = attractionTimes.split(',');
-                // console.log(splitTimes, 'split times');
+                if(attraction.times){let attractionTimes = attraction.times.join(', ');}                // console.log(attractionTimes);
+
                      $('#descriptionArea').append(`
                         <div class='attraction' id='${attraction.id}'>
                         <p> ${attraction.name} - <b>${area.name}</b></p>
