@@ -49,10 +49,7 @@ module.exports.formatTimes =  (time) => {
     }
     let firstDigs = time.slice(0,2);
     let Added = parseInt(firstDigs)+12;
-    
     time = Added + time.slice(3);
-    // console.log(time, 'in if');
-    // console.log(time);
   }
   let result = time.replace(/[^0-9]+/g, '');
   return result;

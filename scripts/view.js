@@ -36,15 +36,16 @@ module.exports.printAreas = (areas)=>{
 //populate side bar w/ attractions by area
 module.exports.printAttractionsByArea = (attractionsArray)=>{
    $('#descriptionArea').html('');
-
    model.getParkData('attraction_types')
       .then(types=>{
          types.forEach(function(type){
             attractionsArray.forEach(function(attraction){
-
                if(attraction.type_id === type.id){
                      $('#descriptionArea').append(`
+                     <div class='attraction' id='${attraction.id}'>
                         <p>${attraction.name} - <b>${type.name}</b></p>
+                        <p class='attrDescription' style='display:none'>${attraction.description}</p>
+                        </div>
                      `);
                }
             });
@@ -55,15 +56,16 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
 //populate side bar w/ attractions by time
 module.exports.printAttractionsByTime = (arr)=>{
    $('#descriptionArea').html('');
-
    model.getParkData('areas')
       .then(areas=>{
          areas.forEach(function(area){
             arr.forEach(function(attraction){
-
                if(attraction.area_id === area.id){
                      $('#descriptionArea').append(`
-                        <p>${attraction.name} - <b>${area.name}</b></p>
+                        <div class='attraction' id='${attraction.id}'>
+                        <p ${attraction.name} - <b>${area.name}</b></p>
+                        <p class='attrDescription' style='display:none'>${attraction.description}</p>
+                        </div>
                      `);
                }
             });
