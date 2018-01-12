@@ -29,18 +29,17 @@ module.exports.retrieveAreaByAttraction=(attractions, searchInput)=>{
   });
 };
 
-module.exports.retrieveAttractionsByArea=(attractions, id)=>{
-  return new Promise((resolve, reject)=>{
+module.exports.retrieveAttractionsByProp = (attractions, val, key) => {
+  return new Promise((resolve, reject) => {
     let attractionsArray = [];
-    attractions.forEach(function(attraction){
-      if(attraction.area_id === +id){
+    attractions.forEach(function (attraction) {
+      if (attraction[key] === +val) {
         attractionsArray.push(attraction);
       }
     });
-    resolve(attractionsArray);  
+    resolve(attractionsArray);
   });
 };
-
 
 module.exports.formatTimes =  (time) => {
   time = time .replace(/[\s]+/g, '');

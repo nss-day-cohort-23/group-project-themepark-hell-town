@@ -27,6 +27,10 @@ module.exports.activateListeners = ()=>{
 
    //eventLstnr for attraction cards
 
+
+   //listnr for type select
+   $('#typeSelect').change(searchAttractionsByType);
+
 };
 
 module.exports.searchAttractionsByTime = () => {
@@ -70,17 +74,29 @@ const searchAttractionsByName = (e)=>{
 }
 };
 
-const searchAttractionsByArea = (function(e){
+const searchAttractionsByArea = function(e){
       let id = $(this).attr('id').match(/\d+/)[0];
       // console.log('id: ',id);
       model.getParkData('attractions')
       .then(attractions=>{
-         model.retrieveAttractionsByArea(attractions,id)
+         model.retrieveAttractionsByProp(attractions,id,'area_id')
       .then(attractionsArr => {
          view.printAttractionsByArea(attractionsArr);
       }); 
    });
-});
+};
+
+
+const searchAttractionsByType = function(){
+  let typeNum = $(this).val();
+  model.getParkData('attractions')
+    .then(attractions=>{
+      return model.retrieveAttractionsByProp(attractions, typeNum, 'type_id'); 
+    })
+    .then(attractionsArr => {
+      view.printAttractionsByTime(attractionsArr);
+    });
+};
 
 
 
