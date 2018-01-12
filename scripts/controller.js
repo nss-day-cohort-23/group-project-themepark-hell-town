@@ -32,8 +32,12 @@ module.exports.activateListeners = ()=>{
 };
 
 module.exports.searchAttractionsByTime = () => {
+  for(let i = 1; i < 9; i++){
+    $(`#item${i}`).removeClass("highlight");
+  }
   let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
+  let listToHighlight = [];
   model.getParkData('attractions')
     .then(attractions => {
       attractions.forEach((attraction) => {
@@ -42,18 +46,23 @@ module.exports.searchAttractionsByTime = () => {
           attractionTimes.forEach((time) => {
             let formattedTime = model.formatTimes(time);
             if (+formattedTime - (+timeVal) <= 100 && +formattedTime - (+timeVal) >0){
+              listToHighlight.push(attraction.area_id);
               attractionSchedule.push(attraction);
             }
           });
         }
       });
       view.printAttractionsByTime(attractionSchedule);
+      view.highlightAreas(listToHighlight);
     });
 };
 
 
 const searchAttractionsByName = (e)=>{
-   if(e.keyCode === 13){
+  for(let i = 1; i < 9; i++){
+    $(`#item${i}`).removeClass("highlight");
+  }
+   if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
       let searchInput = $('#searchInput').val();
       model.getParkData('attractions')
         .then(attractions=>{
@@ -70,18 +79,25 @@ const searchAttractionsByName = (e)=>{
 };
 
 const searchAttractionsByArea = function(e){
-      let id = $(this).attr('id').match(/\d+/)[0];
-      model.getParkData('attractions')
-      .then(attractions=>{
-         model.retrieveAttractionsByProp(attractions,id,'area_id')
-      .then(attractionsArr => {
-         view.printAttractionsByArea(attractionsArr);
-      }); 
-   });
+  for(let i = 1; i < 9; i++){
+    $(`#item${i}`).removeClass("highlight");
+  }
+  $(this).addClass("highlight");
+  let id = $(this).attr('id').match(/\d+/)[0];
+  model.getParkData('attractions')
+    .then(attractions=>{
+        model.retrieveAttractionsByProp(attractions,id,'area_id')
+    .then(attractionsArr => {
+        view.printAttractionsByArea(attractionsArr);
+    }); 
+  });
 };
 
 
 const searchAttractionsByType = function(){
+  for(let i = 1; i < 9; i++){
+    $(`#item${i}`).removeClass("highlight");
+  }
   let typeNum = $(this).val();
   model.getParkData('attractions')
     .then(attractions=>{
@@ -89,6 +105,11 @@ const searchAttractionsByType = function(){
     })
     .then(attractionsArr => {
       view.printAttractionsByTime(attractionsArr);
+      let listToHighlight = [];
+      attractionsArr.forEach((attraction)=>{
+        listToHighlight.push(attraction.area_id);
+      });
+      view.highlightAreas(listToHighlight);
     });
 };
 
