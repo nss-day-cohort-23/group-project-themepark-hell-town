@@ -53,7 +53,10 @@ module.exports.searchAttractionsByTime = () => {
 
 
 const searchAttractionsByName = (e)=>{
-   if(e.keyCode === 13){
+  for(let i = 1; i < 9; i++){
+    $(`#item${i}`).removeClass("highlight");
+  }
+   if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
       let searchInput = $('#searchInput').val();
       model.getParkData('attractions')
         .then(attractions=>{
@@ -70,14 +73,17 @@ const searchAttractionsByName = (e)=>{
 };
 
 const searchAttractionsByArea = function(e){
-      let id = $(this).attr('id').match(/\d+/)[0];
-      model.getParkData('attractions')
-      .then(attractions=>{
-         model.retrieveAttractionsByProp(attractions,id,'area_id')
-      .then(attractionsArr => {
-         view.printAttractionsByArea(attractionsArr);
-      }); 
-   });
+  for(let i = 1; i < 9; i++){
+    $(`#item${i}`).removeClass("highlight");
+  }
+  let id = $(this).attr('id').match(/\d+/)[0];
+  model.getParkData('attractions')
+    .then(attractions=>{
+        model.retrieveAttractionsByProp(attractions,id,'area_id')
+    .then(attractionsArr => {
+        view.printAttractionsByArea(attractionsArr);
+    }); 
+  });
 };
 
 
