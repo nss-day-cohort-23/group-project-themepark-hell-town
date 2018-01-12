@@ -64,7 +64,6 @@ module.exports.printAttractionsByTime = (arr)=>{
       .then(areas=>{
          areas.forEach(function(area){
             arr.forEach(function(attraction){
-              console.log(attraction, 'attr');
                if(attraction.area_id === area.id){
                      $('#descriptionArea').append(`
                         <div class='attraction' id='${attraction.id}'>
