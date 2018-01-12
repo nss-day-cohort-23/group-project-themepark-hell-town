@@ -34,6 +34,11 @@ module.exports.activateListeners = ()=>{
 
 };
 
+function clearInputs(){
+
+  
+}
+
 module.exports.searchAttractionsByTime = () => {
   for(let i = 1; i < 9; i++){
     $(`#item${i}`).removeClass("highlight");

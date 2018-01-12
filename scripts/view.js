@@ -75,7 +75,7 @@ module.exports.printAttractionsByTime = (arr)=>{
                         ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
                         
                         </p> </div>
-
+               `);
                }
             });
          });
