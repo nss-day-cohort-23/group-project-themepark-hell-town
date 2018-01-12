@@ -67,10 +67,11 @@ module.exports.printAttractionsByTime = (arr)=>{
                      $('#descriptionArea').append(`
                         <div class='attraction' id='${attraction.id}'>
                         <p> ${attraction.name} - <b>${area.name}</b></p>
-                        <p class='attrDescription' style='display:none'>${attraction.description}<br><br>
-                        <b>Start Times: ${attraction.times}<b></p>
-                        </div>
-                     `);
+                        <p class='attrDescription' style='display:none'>
+                        ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attraction.times + `</b>`: '') + `
+                        
+                        </p> </div>
+                      `);
                }
             });
          });
