@@ -18,6 +18,9 @@ model.getParkData('areas')
    })
    .then(()=>{ 
       controller.activateListeners();
+   })
+   .then(()=>{
+      controller.searchAttractionsByTime();
    });
 
 

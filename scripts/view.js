@@ -1,5 +1,4 @@
 "use strict";
-
 const model = require('./model'); 
 
 
@@ -34,7 +33,7 @@ module.exports.printAreas = (areas)=>{
 };
 
 
-//populate side bar w/ clicked attractions
+//populate side bar w/ attractions by area
 module.exports.printAttractionsByArea = (attractionsArray)=>{
    $('#descriptionArea').html('');
 
@@ -54,17 +53,17 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
 };
 
 //populate side bar w/ attractions by time
-module.exports.printAttractionsByArea = (attractionsArray)=>{
+module.exports.printAttractionsByTime = (arr)=>{
    $('#descriptionArea').html('');
 
-   model.getParkData('attraction_types')
-      .then(types=>{
-         types.forEach(function(type){
-            attractionsArray.forEach(function(attraction){
+   model.getParkData('areas')
+      .then(areas=>{
+         areas.forEach(function(area){
+            arr.forEach(function(attraction){
 
-               if(attraction.type_id === type.id){
+               if(attraction.area_id === area.id){
                      $('#descriptionArea').append(`
-                        <p>${attraction.name} - <b>${type.name}</b></p>
+                        <p>${attraction.name} - <b>${area.name}</b></p>
                      `);
                }
             });
