@@ -126,10 +126,25 @@ main{
    font-family: Quicksand, sans-serif;
 }
 
+.attraction{
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.attraction p{
+  margin: 15px 0px;
+}
+.attraction span{
+  font-size: 13.7px;
+  font-style: italic;
+  letter-spacing: .3px;
+}
+.attraction span:hover{
+  cursor: pointer;
+  opacity: .6;
+}
+
 .highlight{
-  border: 10px solid red;
-
-
+  border: 10px solid rgba(255,0,0,.9);
+  // box-shadow: inset 0px 0px 5px 5px rgba(255,0,0,.9);
 }
 
 //Footer
