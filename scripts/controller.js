@@ -73,6 +73,7 @@ const searchAttractionsByName = (e)=>{
                 listOfAreasToHighlight.push(attraction.area_id);
               });
             view.highlightAreas(listOfAreasToHighlight);
+            view.printAttractionsByArea(searchResults);
         });
         });
     }
