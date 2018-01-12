@@ -21,6 +21,14 @@ module.exports.activateListeners = ()=>{
      module.exports.searchAttractionsByTime();
    });
 
+
+
+   });
+
+   //click on attraction, get description
+   $(document).on('click', ".attraction", function() {
+    $(this).find('.attrDescription').slideToggle();
+  });
    //eventLstnr for attraction cards
 
    
