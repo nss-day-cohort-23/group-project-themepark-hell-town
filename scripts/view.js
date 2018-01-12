@@ -67,7 +67,7 @@ module.exports.printAttractionsByTime = (arr)=>{
             arr.forEach(function(attraction){
               let attractionTimes = '';
                if(attraction.area_id === area.id){
-                if(attraction.times){attractionTimes = attraction.times.join(', ');}                // console.log(attractionTimes);
+                if(attraction.times){attractionTimes = attraction.times.join(', ');}               
                      $('#descriptionArea').append(`
                         <div class='attraction' id='${attraction.id}'>
                         <p> ${attraction.name} - <b>${area.name}</b></p>
