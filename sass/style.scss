@@ -1,15 +1,32 @@
+@font-face {
+    font-family: murder;
+    src: url('../css/fonts/youmurdererbb_reg.otf');
+}
+@font-face {
+    font-family: downCity;
+    src: url('../css/fonts/Barbed Wires.ttf');
+}
+
 body{
    margin: 0 auto;
-   height: 100vh;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+  //  font-family: ;
+  //  background-image: url("../images/.jpg");
+  //  background-repeat: no-repeat;
+  //  background-position: center;
+  //  background-size: cover;
 }
 main{
    margin: 0 2em;
+   flex: 1;
 }
 
 
 // Nav styling
 .nav{
-   height: 3.5em;
+   height: 4.5em;
 }
 .navItems{
    display: flex;
@@ -17,14 +34,20 @@ main{
    justify-content: center;
    padding: 0 2em;
    margin: 0;
-   line-height: 3.5em;
+   line-height: 4.5em;
 }
 .navItems li:nth-child(2){
    margin: auto;
 }
 #brand{
-   //
+   font-family: murder;
+   font-size: 3em;
+   letter-spacing: 1px;
 }
+
+#searchInput{
+  width: 18em;
+  height: 1.7em;}
 .searchIcon{
    height: .76em;
 }
@@ -40,14 +63,20 @@ main{
 #areaGrid{
    display: grid;
    grid-template-columns: 33% 33% 33%;
-   grid-template-rows: 9.5em 9.5em 9.5em;
+   grid-template-rows: 5.2em 5.2em 5.2em;
    text-align: center;
    color: white;
    padding-left: 5px;
+   font-family: murder;
+   font-size: 2.12em;
+   letter-spacing: 1.20px;
 }
 .gridItem{
-   line-height: 9.5em;
-
+   line-height: 5.2em;
+}
+.gridItem:hover{
+  opacity: .8;
+  cursor: pointer;
 }
 #areaGrid #item5{
    grid-column-start: 3;
@@ -74,8 +103,19 @@ main{
    width: 33.5%;
    float: left;
    border-radius: 19px;
+   padding: 0.3em 1em;
+   font-family: Quicksand, sans-serif;
 }
 
 .highlight{
   border: 10px dotted hotpink;
+}
+
+
+
+//Footer
+.footer{
+  font-family: murder;
+  font-size: 1.5em;
+  text-align: center;
 }
