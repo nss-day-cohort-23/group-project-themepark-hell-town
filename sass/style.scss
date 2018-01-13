@@ -142,9 +142,22 @@ main{
   opacity: .6;
 }
 
+
 .highlight{
   border: 10px solid rgba(255,0,0,.9);
   // box-shadow: inset 0px 0px 5px 5px rgba(255,0,0,.9);
+}
+
+
+.unhighlight{
+  zoom: 1;
+  filter: alpha(opacity=45);
+  opacity: 0.45;
+  -webkit-transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -ms-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
 }
 
 //Footer

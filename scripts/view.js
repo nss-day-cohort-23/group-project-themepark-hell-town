@@ -43,8 +43,9 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
               let attractionTimes = '';
                if(attraction.type_id === type.id){
                 if(attraction.times){ attractionTimes = attraction.times.join(', ');}
+                let area_id = attraction.area_id;
                      $('#descriptionArea').append(`
-                     <div class='attraction' id='${attraction.id}'>
+                     <div class='attraction item${area_id}' id='${attraction.id}'>
                        <p><b>${attraction.name}</b> - <span>${type.name}</span></p>
                         <p class='attrDescription' style='display:none'>
                        ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes+ `</b>`: '') + `
@@ -69,8 +70,8 @@ module.exports.printAttractionsByTime = (arr)=>{
                if(attraction.area_id === area.id){
                 if(attraction.times){attractionTimes = attraction.times.join(', ');}                // console.log(attractionTimes);
                      $('#descriptionArea').append(`
-                        <div class='attraction' id='${attraction.id}'>
-                       <p><b> ${attraction.name}</b> - <span style='color:#${area.colorTheme}'>${area.name}</span></p>
+                        <div class='attraction item${area.id}' id='${attraction.id}'>
+                       <p><b> ${attraction.name}</b> - <span 'style='color:#${area.colorTheme}'>${area.name}</span></p>
                         <p class='attrDescription' style='display:none'>
                         ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
                         
@@ -91,3 +92,39 @@ module.exports.highlightAreas = (list) =>{
     $(`#item${area}`).addClass("highlight");
   });
 };
+
+module.exports.highlightSelectedArea = (item) => {
+  // $('.gridItem').removeClass('unhighlight');
+  // $(`#${item}`).toggleClass('unhighlight');
+  $('.gridItem').not($(`#${item}`)).toggleClass('unhighlight');
+    // $('.gridItem').removeClass('unhighlight');
+  // $(`#${item}`).removeClass('unhighlight');
+};
+module.exports.removeUnhighlight = ()=>{
+  $('.gridItem').removeClass('unhighlight');
+};
+
+module.exports.clearInputs= (input) => {
+  let $type = $('#typeSelect');
+  let $search = $('#searchInput');
+  let $time = $('#time');
+    switch (input) {
+      case 'time':
+      $search.val('');
+      $type.val('');
+      break;
+      case 'name':
+      $type.val('');
+      $('#time').val(new Date().toLocaleTimeString([], { hour: "numeric", minute: "numeric"}));
+      break;
+      case 'area':
+      $type.val('');
+      $('#time').val(new Date().toLocaleTimeString([], { hour: "numeric", minute: "numeric"}));
+      $search.val('');
+      break;
+      case 'type':
+      $search.val('');
+      $('#time').val(new Date().toLocaleTimeString([], { hour: "numeric", minute: "numeric"}));
+      break;
+    }
+  };
