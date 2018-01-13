@@ -19,37 +19,46 @@ body{
   //  background-size: cover;
 }
 main{
-   margin: 0 2em;
+   margin: .7em 2em;
    flex: 1;
 }
 
 
 // Nav styling
+header{
+  box-shadow: 0 0.1px 3px -0.5px;
+}
 .nav{
-   height: 4.5em;
+  height: 4.75em;
 }
 .navItems{
-   display: flex;
-   list-style: none;
-   justify-content: center;
-   padding: 0 2em;
-   margin: 0;
-   line-height: 4.5em;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0 6em;
+  margin: 0;
+  line-height: 4.5em;
 }
 .navItems li:nth-child(2){
-   margin: auto;
+  margin: auto;
 }
 #brand{
-   font-family: murder;
-   font-size: 3em;
-   letter-spacing: 1px;
+  font-family: murder;
+  font-size: 3.65em;
+  letter-spacing: 1px;
+}
+.coaster{
+  height: 58px;
+  transform: translate(-125px, 10px);
+  opacity: 0.21;
 }
 
 #searchInput{
-  width: 18em;
-  height: 1.7em;}
+  width: 19em;
+  height: 1.8em;
+  border-radius: 15px;}
 .searchIcon{
-   height: .76em;
+  height: .76em;
 }
 
 
@@ -58,6 +67,7 @@ main{
   padding: 3px 0px;
   width: 35.5%;
   text-align: center;
+  margin-bottom: .6em;
 }
 #timeDiv * {
   width: 5.25em;
@@ -85,7 +95,7 @@ main{
    grid-template-rows: 5.2em 5.2em 5.2em;
    text-align: center;
    color: white;
-   padding-left: 5px;
+   padding-left: 1em;
    font-family: murder;
    font-size: 2.12em;
    letter-spacing: 1.20px;
