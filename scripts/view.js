@@ -94,11 +94,9 @@ module.exports.highlightAreas = (list) =>{
 };
 
 module.exports.highlightSelectedArea = (item) => {
-  // $('.gridItem').removeClass('unhighlight');
-  // $(`#${item}`).toggleClass('unhighlight');
+  if($(`#${item}`).hasClass('unhighlight')){
+    $('.gridItem').removeClass('unhighlight');  }
   $('.gridItem').not($(`#${item}`)).toggleClass('unhighlight');
-    // $('.gridItem').removeClass('unhighlight');
-  // $(`#${item}`).removeClass('unhighlight');
 };
 module.exports.removeUnhighlight = ()=>{
   $('.gridItem').removeClass('unhighlight');
