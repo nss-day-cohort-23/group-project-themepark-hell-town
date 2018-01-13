@@ -71,7 +71,7 @@ module.exports.printAttractionsByTime = (arr)=>{
                 if(attraction.times){attractionTimes = attraction.times.join(', ');}                // console.log(attractionTimes);
                      $('#descriptionArea').append(`
                         <div class='attraction item${area.id}' id='${attraction.id}'>
-                       <p><b> ${attraction.name}</b> - <span 'style='color:#${area.colorTheme}'>${area.name}</span></p>
+                       <p><b> ${attraction.name}</b> - <span style='color:#${area.colorTheme}'>${area.name}</span></p>
                         <p class='attrDescription' style='display:none'>
                         ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
                         
@@ -94,14 +94,17 @@ module.exports.highlightAreas = (list) =>{
 };
 
 module.exports.highlightSelectedArea = (item) => {
-  // $('.gridItem').removeClass('unhighlight');
-  // $(`#${item}`).toggleClass('unhighlight');
   $('.gridItem').not($(`#${item}`)).toggleClass('unhighlight');
-    // $('.gridItem').removeClass('unhighlight');
-  // $(`#${item}`).removeClass('unhighlight');
 };
 module.exports.removeUnhighlight = ()=>{
-  $('.gridItem').removeClass('unhighlight');
+  $.each(($('.gridItem')),(item)=>{
+    item = item +1;
+    console.log('area',item);
+    if($(`#item${item}`).hasClass('unhighlight')){
+      $(`#item${item}`).removeClass('unhighlight');
+    }
+  });
+
 };
 
 module.exports.clearInputs= (input) => {
