@@ -23,6 +23,11 @@ module.exports.activateListeners = ()=>{
   
    //click on attraction, get description
    $(document).on('click', ".attraction", function() {
+
+    // click on an attraction besides currently selected one, it removes unhighlight from all
+    if ($(this).find('.attrDescription').is(':hidden'))
+      $('.gridItem').removeClass('unhighlight');  
+    
     $(this).find('.attrDescription').slideToggle();
     $('#descriptionArea').find('.attrDescription').not($(this).find('.attrDescription')).hide();
     let item = $(this).attr('class').split(' ')[1];
