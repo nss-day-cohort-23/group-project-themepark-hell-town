@@ -48,13 +48,10 @@ const getItinerary = ()=>{
     .then(ids=>{
       $.each(ids, function(entry){
         ids[entry].entry_id = entry;
-        console.log('entry',entry);
       });
-      console.log('entries',ids);
       let idsArray = Object.keys(ids);
       let valuesArray = [];
       idsArray.forEach(function(value, index){
-          console.log('value',value);
           valuesArray.push(ids[value]);
         });
       view.printItinerary(valuesArray);
@@ -65,12 +62,10 @@ const addToItinerary = function(){
   let attrackid = this.parentNode.parentNode.id;
   let presendText = {attr_id: attrackid};
   let sendText = JSON.stringify(presendText);
-  // console.log('sendText: ',sendText);
   model.getParkData('itinerary')
   .then(ids=>{
     $.each(ids, function(entry){
       ids[entry].entry_id = entry;
-      // console.log('entry',entry);
     });
   });
   $.ajax({
@@ -79,13 +74,11 @@ const addToItinerary = function(){
     dataType: "json",
     data: sendText
   }).done(response =>{
-    // console.log('attraction number: ', this.parentNode.parentNode.id);
+    console.log('response: ',response);
   });
 };
 
 const deleteFromItinerary = function(){
-  //  console.log('this:', this.parentNode.parentNode.id);
-   
   let attractionToDeletedID = this.parentNode.parentNode.id;
   let testText = JSON.stringify(this.parentNode.parentNode.id);
   $.ajax({
@@ -94,7 +87,6 @@ const deleteFromItinerary = function(){
     data: testText
   }).done(response =>{
     getItinerary();    
-    // console.log('attraction number: ', this.parentNode.parentNode.id);
   });
 };
 
@@ -119,7 +111,7 @@ module.exports.searchAttractionsByTime = () => {
                 listToHighlight.push(attraction.area_id);
                 attractionSchedule.push(attraction);
               } else{
-                // console.log('excluded',attraction);
+                console.log('excluded',attraction);
               }
             }
           });

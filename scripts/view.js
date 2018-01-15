@@ -129,7 +129,6 @@ module.exports.clearInputs= (input) => {
 
   module.exports.printItinerary = (valuesArray)=>{
     $('#descriptionArea').html('');
-    // console.log('valuesArray: ',valuesArray);
     let areasArray = [];
     let typesArray = [];
     model.getParkData('areas')
@@ -150,7 +149,6 @@ module.exports.clearInputs= (input) => {
        .then(attractions=>{
           attractions.forEach(function(attraction){
              valuesArray.forEach(function(entry){
-              //  console.log('entry: ',entry);
                let attractionTimes = '';
                if(attraction.id === +entry.attr_id){
                  if(attraction.times){ attractionTimes = attraction.times.join(', ');}
