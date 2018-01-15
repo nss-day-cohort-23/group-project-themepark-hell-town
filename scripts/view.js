@@ -4,7 +4,7 @@ const model = require('./model');
 
 // fill page w html content
 module.exports.populatePage=()=>{
-   let d = new Date();
+  let d = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
    $('.nav').append(`
       <ul class='navItems'>
          <li id='brand'>Hell Town
@@ -18,7 +18,7 @@ module.exports.populatePage=()=>{
    `);
 
    $('footer').append(`
-      <div class='footer'><p>Copyright ${d.getFullYear()}</p></div>
+      <div class='footer'><p>Copyright ${d}</p></div>
    `);
 };
 

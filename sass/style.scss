@@ -2,27 +2,22 @@
     font-family: murder;
     src: url('../css/fonts/youmurdererbb_reg.otf');
 }
-@font-face {
-    font-family: downCity;
-    src: url('../css/fonts/Barbed Wires.ttf');
-}
 
 body{
    margin: 0 auto;
    min-height: 100vh;
    display: flex;
    flex-direction: column;
-  //  font-family: ;
-  //  background-image: url("../images/.jpg");
-  //  background-repeat: no-repeat;
-  //  background-position: center;
-  //  background-size: cover;
-}
-main{
-   margin: .7em 2em;
-   flex: 1;
 }
 
+main{
+   padding: .7em 2em;
+   flex: 1;
+   background-image: url("../images/coaster.jpg");
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+}
 
 // Nav styling
 header{
@@ -35,7 +30,7 @@ header{
   display: flex;
   list-style: none;
   justify-content: center;
-  padding: 0 6em;
+  padding-left: 6em;
   margin: 0;
   line-height: 4.5em;
 }
@@ -90,52 +85,62 @@ header{
 
 // Grid styling
 #areaGrid{
-   display: grid;
-   grid-template-columns: 33% 33% 33%;
-   grid-template-rows: 5.2em 5.2em 5.2em;
-   text-align: center;
-   color: white;
-   padding-left: 1em;
-   font-family: murder;
-   font-size: 2.12em;
-   letter-spacing: 1.20px;
+  display: grid;
+  max-width: 21.5em;
+  grid-template-columns: 32% 32% 32%;
+  grid-template-rows: 5.2em 5.2em 5.2em;
+  text-align: center;
+  color: white;
+  padding-left: 1em;
+  font-family: murder;
+  font-size: 2.12em;
+  letter-spacing: 1.20px;
+  background-image: url(../images/skull.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 31.6% 5.23em;
+  background-position-x: 51%;
+  opacity: .97;
 }
 .gridItem{
-   line-height: 5.2em;
+   padding-top: 1.8em;
 }
 .gridItem:hover{
   opacity: .8;
-  cursor: pointer;
+  cursor: url('../images/trident.png'), auto;
 }
 #areaGrid #item5{
-   grid-column-start: 3;
+  grid-column-start: 3;
 }
 #item1{
-   border-top-left-radius: 20px;
+  border-top-left-radius: 20px;
 }
 #item3{
-   border-top-right-radius: 20px;
+  border-top-right-radius: 20px;
 }
 #item6{
-   border-bottom-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 #item8{
-   border-bottom-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 
 // discription area
 #descriptionArea{
-   height: 28.4em;
-   overflow: scroll;
-   border: 1px solid black;
-   width: 33.5%;
-   float: left;
-   border-radius: 19px;
-   padding: 0.3em 1em;
-   font-family: Quicksand, sans-serif;
+  height: 28.4em;
+  overflow: scroll;
+  border: 1px solid black;
+  width: 33.5%;
+  float: left;
+  border-radius: 19px;
+  padding: 0.3em 1em;
+  font-family: Quicksand, sans-serif;
+  background-color: rgba(244,245,249,.97);
 }
-
+#descriptionArea:hover{
+  cursor: url('../images/tridentBlk.png'), auto;
+}
 .attraction{
   border-bottom: 1px solid rgba(0,0,0,.1);
 }
@@ -148,7 +153,6 @@ header{
   letter-spacing: .3px;
 }
 .attraction span:hover{
-  cursor: pointer;
   opacity: .6;
 }
 
@@ -160,6 +164,15 @@ header{
 //Footer
 .footer{
   font-family: murder;
-  font-size: 1.5em;
+  font-size: 1.65em;
   text-align: center;
+  background-color: rgba(245,245,245,.7);
+  width: 6.5em;
+  margin: auto;
+}
+footer{
+  background-position-y: -.3em;
+  background-color: ghostwhite;
+  background-size: 2.5em 1.8em;
+  background-image: url(../images/wire.svg);
 }
