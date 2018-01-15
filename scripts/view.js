@@ -68,7 +68,6 @@ module.exports.printAttractionsByTime = (arr)=>{
          areas.forEach(function(area){
             arr.forEach(function(attraction){
               let attractionTimes = '';
-              console.log(attraction, 'attr');
                if(attraction.area_id === area.id){
                   if(attraction.times){ attractionTimes = attraction.times.join(', ');}
                      $('#descriptionArea').append(`

@@ -25,6 +25,8 @@ module.exports.retrieveAreaByAttraction=(attractions, searchInput)=>{
         searchResults.push(attraction);
       }
     });
+    if(searchResults[0] == undefined) 
+      alert(`We do not have an attraction at Hell Town matching "${searchInput}". Please try again.`);
     resolve(searchResults);
   });
 };
