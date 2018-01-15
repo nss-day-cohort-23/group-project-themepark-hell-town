@@ -51,7 +51,7 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
                        <p><b>${attraction.name}</b> - <span>${type.name}</span></p>
                         <p class='attrDescription' style='display:none'>
                        ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
-                       
+                       <br><button class='itinerary' type='button'>Add to Itinerary</button>
                        </p> </div>
                      `);
                }
@@ -68,7 +68,6 @@ module.exports.printAttractionsByTime = (arr)=>{
          areas.forEach(function(area){
             arr.forEach(function(attraction){
               let attractionTimes = '';
-              console.log(attraction, 'attr');
                if(attraction.area_id === area.id){
                   if(attraction.times){ attractionTimes = attraction.times.join(', ');}
                      $('#descriptionArea').append(`
@@ -76,7 +75,7 @@ module.exports.printAttractionsByTime = (arr)=>{
                        <p><b> ${attraction.name}</b> - <span style='color:#${area.colorTheme}'>${area.name}</span></p>
                         <p class='attrDescription' style='display:none'>
                         ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
-                        
+                        <br><button class='itinerary' type='button'>Add to Itinerary</button>
                         </p> </div>
                `);
                }
@@ -126,3 +125,58 @@ module.exports.clearInputs= (input) => {
       break;
     }
   };
+
+
+  module.exports.printItinerary = (valuesArray)=>{
+    $('#descriptionArea').html('');
+    $('#descriptionArea').html('');
+    let areasArray = [];
+    let typesArray = [];
+    model.getParkData('areas')
+       .then(areas=>{
+          areas.forEach(function(area){
+            areasArray.push(area);
+          }
+        );
+      });
+    model.getParkData('attraction_types')
+    .then(types=>{
+        types.forEach(function(type){
+          typesArray.push(type);
+        }
+      );
+    });
+    model.getParkData('attractions')
+       .then(attractions=>{
+          attractions.forEach(function(attraction){
+             valuesArray.forEach(function(entry){
+               let attractionTimes = '';
+               if(attraction.id === +entry){
+                 if(attraction.times){ attractionTimes = attraction.times.join(', ');}
+                 let area_id = attraction.area_id;
+                 let type_id = attraction.type_id;
+                 areasArray.forEach(function(area){
+                  typesArray.forEach(function(type){
+                   if(area_id === area.id){
+                     if(type_id === type.id){
+                       $('#descriptionArea').append(`
+                       <div class='attraction item${area_id}' id='${attraction.id}'>
+                       <p><b>${attraction.name}</b> - <span>(${type.name})</span>
+                       <span style='color:#${area.colorTheme}'>${area.name}</span></p>
+                       <p class='attrDescription' style='display:none'>
+                       ${attraction.description}` + (attraction.times? `<br>
+                       <br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
+                       <button id='deleteFromItinerary' type='button'>Remove from Itinerary</button>
+                       </p> </div>
+                       `);
+                      }
+                    }
+                    }
+                  );
+                  });
+                }
+             });
+            });
+          });
+        };
+       
