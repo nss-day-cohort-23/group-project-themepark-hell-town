@@ -2,54 +2,60 @@
     font-family: murder;
     src: url('../css/fonts/youmurdererbb_reg.otf');
 }
-@font-face {
-    font-family: downCity;
-    src: url('../css/fonts/Barbed Wires.ttf');
-}
 
 body{
    margin: 0 auto;
    min-height: 100vh;
    display: flex;
    flex-direction: column;
-  //  font-family: ;
-  //  background-image: url("../images/.jpg");
-  //  background-repeat: no-repeat;
-  //  background-position: center;
-  //  background-size: cover;
-}
-main{
-   margin: 0 2em;
-   flex: 1;
 }
 
+main{
+   padding: .7em 2em;
+   flex: 1;
+   background-image: url("../images/coaster.jpg");
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+}
 
 // Nav styling
+header{
+  box-shadow: 0 0.1px 2.4px -0.5px;
+  z-index: 1;
+  background-color: rgba(250,250,250,.9);
+}
 .nav{
-   height: 4.5em;
+  height: 4.75em;
 }
 .navItems{
-   display: flex;
-   list-style: none;
-   justify-content: center;
-   padding: 0 2em;
-   margin: 0;
-   line-height: 4.5em;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding-left: 6em;
+  margin: 0;
+  line-height: 4.5em;
 }
 .navItems li:nth-child(2){
-   margin: auto;
+  margin: auto;
 }
 #brand{
-   font-family: murder;
-   font-size: 3em;
-   letter-spacing: 1px;
+  font-family: murder;
+  font-size: 3.65em;
+  letter-spacing: 1px;
+}
+.coaster{
+  height: 58px;
+  transform: translate(-125px, 10px);
+  opacity: 0.4;
 }
 
 #searchInput{
-  width: 18em;
-  height: 1.7em;}
+  width: 19em;
+  height: 1.8em;
+  border-radius: 15px;}
 .searchIcon{
-   height: .76em;
+  height: .76em;
 }
 
 
@@ -58,6 +64,7 @@ main{
   padding: 3px 0px;
   width: 35.5%;
   text-align: center;
+  margin-bottom: .6em;
 }
 #timeDiv * {
   width: 5.25em;
@@ -80,52 +87,62 @@ main{
 
 // Grid styling
 #areaGrid{
-   display: grid;
-   grid-template-columns: 33% 33% 33%;
-   grid-template-rows: 5.2em 5.2em 5.2em;
-   text-align: center;
-   color: white;
-   padding-left: 5px;
-   font-family: murder;
-   font-size: 2.12em;
-   letter-spacing: 1.20px;
+  display: grid;
+  max-width: 21.5em;
+  grid-template-columns: 32% 32% 32%;
+  grid-template-rows: 5.2em 5.2em 5.2em;
+  text-align: center;
+  color: white;
+  padding-left: 1em;
+  font-family: murder;
+  font-size: 2.12em;
+  letter-spacing: 1.20px;
+  background-image: url(../images/skull.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 31.6% 5.23em;
+  background-position-x: 51%;
+  opacity: .97;
 }
 .gridItem{
-   line-height: 5.2em;
+   padding-top: 1.8em;
 }
 .gridItem:hover{
   opacity: .8;
-  cursor: pointer;
+  cursor: url('../images/trident.png'), auto;
 }
 #areaGrid #item5{
-   grid-column-start: 3;
+  grid-column-start: 3;
 }
 #item1{
-   border-top-left-radius: 20px;
+  border-top-left-radius: 20px;
 }
 #item3{
-   border-top-right-radius: 20px;
+  border-top-right-radius: 20px;
 }
 #item6{
-   border-bottom-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 #item8{
-   border-bottom-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 
 // discription area
 #descriptionArea{
-   height: 28.4em;
-   overflow: scroll;
-   border: 1px solid black;
-   width: 33.5%;
-   float: left;
-   border-radius: 19px;
-   padding: 0.3em 1em;
-   font-family: Quicksand, sans-serif;
+  height: 28.4em;
+  overflow: scroll;
+  border: 1px solid black;
+  width: 33.5%;
+  float: left;
+  border-radius: 19px;
+  padding: 0.3em 1em;
+  font-family: Quicksand, sans-serif;
+  background-color: rgba(244,245,249,.97);
 }
-
+#descriptionArea:hover{
+  cursor: url('../images/tridentBlk.png'), auto;
+}
 .attraction{
   border-bottom: 1px solid rgba(0,0,0,.1);
 }
@@ -138,7 +155,6 @@ main{
   letter-spacing: .3px;
 }
 .attraction span:hover{
-  cursor: pointer;
   opacity: .6;
 }
 
@@ -163,6 +179,15 @@ main{
 //Footer
 .footer{
   font-family: murder;
-  font-size: 1.5em;
+  font-size: 1.65em;
   text-align: center;
+  background-color: rgba(245,245,245,.8);
+  width: 6.5em;
+  margin: auto;
+}
+footer{
+  background-position-y: -.3em;
+  background-color: ghostwhite;
+  background-size: 2.5em 1.8em;
+  background-image: url(../images/wire.svg);
 }
