@@ -8,22 +8,26 @@ body{
    min-height: 100vh;
    display: flex;
    flex-direction: column;
-}
-
-main{
-   padding: .7em 2em;
-   flex: 1;
    background-image: url("../images/coaster.jpg");
    background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
 }
 
+main{
+   padding: .7em 2em;
+   flex: 1;
+  //  background-image: url("../images/coaster.jpg");
+  //  background-repeat: no-repeat;
+  //  background-position: center;
+  //  background-size: cover;
+}
+
 // Nav styling
 header{
   box-shadow: 0 0.1px 2.4px -0.5px;
   z-index: 1;
-  background-color: rgba(250,250,250,.9);
+  background-color: rgba(250,250,250,.95);
 }
 .nav{
   height: 4.75em;
@@ -105,7 +109,8 @@ header{
   opacity: .97;
 }
 .gridItem{
-   padding-top: 1.8em;
+  padding: 1.8em 0.5em;
+  position: relative;
 }
 .gridItem:hover{
   opacity: .8;
@@ -126,11 +131,30 @@ header{
 #item8{
   border-bottom-right-radius: 20px;
 }
+.gridItem p{
+  margin: 0;
+}
+.gridCells{
+  display: grid;
+  grid-template-rows: .5em .5em .5em;
+  grid-template-columns: 21px 21px 21px 21px;
+  position: absolute;
+  grid-row-gap: 1em;
+  grid-column-gap: .9em;
+  bottom: .68em;
+  left: .35em;
+}
+// #item1 cell-item:nth-child(1){
+//   border: 2px solid red;
+// }
+// cell-item{
+//   border: 2px dashed red;
+// }
 
 
 // discription area
 #descriptionArea{
-  height: 28.4em;
+  height: 32.29em;
   overflow: scroll;
   border: 1px solid black;
   width: 33.5%;
@@ -160,7 +184,7 @@ header{
 
 
 .highlight{
-  border: 10px solid rgba(255,0,0,.9);
+  border: 4.6px outset rgba(255,255,255,.95);
   // box-shadow: inset 0px 0px 5px 5px rgba(255,0,0,.9);
 }
 
@@ -186,8 +210,8 @@ header{
   margin: auto;
 }
 footer{
-  background-position-y: -.3em;
-  background-color: ghostwhite;
-  background-size: 2.5em 1.8em;
-  background-image: url(../images/wire.svg);
+  // background-position-y: -.3em;
+  background-color: rgba(250,250,250,.95);
+  // background-size: 2.5em 1.8em;
+  // background-image: url(../images/wire.svg);
 }

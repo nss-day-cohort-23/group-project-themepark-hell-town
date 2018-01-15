@@ -29,7 +29,22 @@ module.exports.printAreas = (areas)=>{
       $('#areaGrid').append(
          `<div class='gridItem' id='item${area.id}' 
          style='background-color:#${area.colorTheme};'>
-         ${area.name}</div>`
+         <p>${area.name}</p>
+         <span class='gridCells'>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+          <cell-item></cell-item>
+         </span>
+         </div>`
       );
    });
 };
