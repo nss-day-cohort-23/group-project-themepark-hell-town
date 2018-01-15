@@ -19,7 +19,4 @@ model.getParkData('areas')
    });    
 
 
-
-   // $('#descriptionArea').on('click', '.attraction', function(){
-   //    console.log('attr', this);
-   // });
+ 

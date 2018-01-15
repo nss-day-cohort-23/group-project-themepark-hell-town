@@ -114,7 +114,7 @@ header{
 }
 .gridItem:hover{
   opacity: .8;
-  cursor: url('../images/trident.png'), auto;
+  cursor: pointer;
 }
 #areaGrid #item5{
   grid-column-start: 3;
@@ -136,20 +136,22 @@ header{
 }
 .gridCells{
   display: grid;
-  grid-template-rows: .5em .5em .5em;
-  grid-template-columns: 21px 21px 21px 21px;
+  grid-template-rows: .9em .9em .9em;
+  grid-template-columns: 28px 28px 28px 28px;
   position: absolute;
-  grid-row-gap: 1em;
-  grid-column-gap: .9em;
+  grid-row-gap: .5em;
+  grid-column-gap: .64em;
   bottom: .68em;
   left: .35em;
 }
-// #item1 cell-item:nth-child(1){
-//   border: 2px solid red;
-// }
-// cell-item{
-//   border: 2px dashed red;
-// }
+
+.cell-highlight{
+  background-image: url("../images/location2.png");
+  background-repeat: no-repeat;
+  background-size: 27px;
+  // opacity: .85;
+}
+
 
 
 // discription area
@@ -164,11 +166,14 @@ header{
   font-family: Quicksand, sans-serif;
   background-color: rgba(244,245,249,.97);
 }
-#descriptionArea:hover{
-  cursor: url('../images/tridentBlk.png'), auto;
-}
+// #descriptionArea:hover{
+//   cursor: pointer;
+// }
 .attraction{
   border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.attraction:hover{
+  cursor: pointer;
 }
 .attraction p{
   margin: 15px 0px;
