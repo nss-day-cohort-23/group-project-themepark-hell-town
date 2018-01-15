@@ -31,7 +31,10 @@ module.exports.activateListeners = ()=>{
     $(this).find('.attrDescription').slideToggle();
     $('#descriptionArea').find('.attrDescription').not($(this).find('.attrDescription')).hide();
     let item = $(this).attr('class').split(' ')[1];
+    console.log('item: ',item);
+    view.removeUnhighlight();
     view.highlightSelectedArea(item); 
+    
   });
 
    //listnr for type select

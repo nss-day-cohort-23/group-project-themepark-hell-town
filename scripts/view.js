@@ -97,7 +97,14 @@ module.exports.highlightSelectedArea = (item) => {
   $('.gridItem').not($(`#${item}`)).toggleClass('unhighlight');
 };
 module.exports.removeUnhighlight = ()=>{
-  $('.gridItem').removeClass('unhighlight');
+  $.each(($('.gridItem')),(item)=>{
+    item = item +1;
+    console.log('area',item);
+    if($(`#item${item}`).hasClass('unhighlight')){
+      $(`#item${item}`).removeClass('unhighlight');
+    }
+  });
+
 };
 
 module.exports.clearInputs= (input) => {
