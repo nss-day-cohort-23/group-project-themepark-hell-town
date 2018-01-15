@@ -23,6 +23,7 @@ main{
   //  background-size: cover;
 }
 
+
 // Nav styling
 header{
   box-shadow: 0 0.1px 2.4px -0.5px;
@@ -83,10 +84,6 @@ header{
   height: 25px;
 }
 
-//Content Wrap (description area/ grid map)
-.contentWrapper{
-
-}
 
 
 // Grid styling
@@ -144,12 +141,14 @@ header{
   bottom: .68em;
   left: .35em;
 }
-
 .cell-highlight{
   background-image: url("../images/location2.png");
   background-repeat: no-repeat;
   background-size: 27px;
   // opacity: .85;
+}
+.nameFade {
+  opacity: .38;
 }
 
 

@@ -187,11 +187,14 @@ const searchAttractionsById = function(attId){
     .then(attractions=>{
       attractions.forEach((attraction)=>{
         if (attraction.id === +attId){
-            $(`.gridItem`).children('.gridCells').children().removeClass("cell-highlight");
-            
+          $(`.gridItem`).children('.gridCells').children().removeClass("cell-highlight");
+          $(`.gridItem`).children('p').removeClass("nameFade");
+
           $(`#item${attraction.area_id}`).children('.gridCells')
             .children(`.location${attraction.location}`)
               .addClass("cell-highlight");
+
+          $(`#item${attraction.area_id}`).children('p').addClass("nameFade");
         }
       });
     });
