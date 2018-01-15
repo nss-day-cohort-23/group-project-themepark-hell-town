@@ -4,10 +4,12 @@ const model = require('./model');
 
 // fill page w html content
 module.exports.populatePage=()=>{
-   let d = new Date();
+  let d = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
    $('.nav').append(`
       <ul class='navItems'>
-         <li id='brand'>Hell Town</li>
+         <li id='brand'>Hell Town
+          <img class="coaster" src="images/wheel.svg">
+         </li>
          <li>
             <input id='searchInput' type="text" placeholder=" Search">
             <img class="searchIcon" src="images/magnifier.svg">
@@ -16,7 +18,7 @@ module.exports.populatePage=()=>{
    `);
 
    $('footer').append(`
-      <div class='footer'><p>Copyright ${d.getFullYear()}</p></div>
+      <div class='footer'><p>Copyright ${d}</p></div>
    `);
 };
 
@@ -48,7 +50,7 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
                      <div class='attraction item${area_id}' id='${attraction.id}'>
                        <p><b>${attraction.name}</b> - <span>${type.name}</span></p>
                         <p class='attrDescription' style='display:none'>
-                       ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes+ `</b>`: '') + `
+                       ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
                        
                        </p> </div>
                      `);
@@ -56,7 +58,6 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
             });
          });
       });
-
 };
 
 //populate side bar w/ attractions by time
@@ -67,8 +68,9 @@ module.exports.printAttractionsByTime = (arr)=>{
          areas.forEach(function(area){
             arr.forEach(function(attraction){
               let attractionTimes = '';
+              console.log(attraction, 'attr');
                if(attraction.area_id === area.id){
-                if(attraction.times){attractionTimes = attraction.times.join(', ');}                // console.log(attractionTimes);
+                  if(attraction.times){ attractionTimes = attraction.times.join(', ');}
                      $('#descriptionArea').append(`
                         <div class='attraction item${area.id}' id='${attraction.id}'>
                        <p><b> ${attraction.name}</b> - <span style='color:#${area.colorTheme}'>${area.name}</span></p>
