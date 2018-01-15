@@ -42,9 +42,8 @@ module.exports.activateListeners = ()=>{
 
 
 module.exports.searchAttractionsByTime = () => {
-  for(let i = 1; i < 9; i++){
-    $(`#item${i}`).removeClass("highlight");
-  } 
+  $(".gridItem").removeClass('highlight');
+
    view.removeUnhighlight();
 
   let attractionSchedule = [];
@@ -72,9 +71,8 @@ module.exports.searchAttractionsByTime = () => {
 
 
 const searchAttractionsByName = (e)=>{
-  for(let i = 1; i < 9; i++){
-    $(`#item${i}`).removeClass("highlight");
-  }
+  $(".gridItem").removeClass('highlight');
+
   view.removeUnhighlight();
 
    if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
@@ -96,12 +94,15 @@ const searchAttractionsByName = (e)=>{
 };
 
 const searchAttractionsByArea = function(e){
-  for(let i = 1; i < 9; i++){
-    $(`#item${i}`).removeClass("highlight");
-  }
-  view.removeUnhighlight();
-
-  $(this).addClass("highlight");
+  if($('.highlight').length  === 1){
+    $(this).toggleClass('highlight');
+    $(".gridItem").not(this).removeClass('highlight');
+  }else{
+    $(".gridItem").removeClass('highlight');
+    $(this).addClass('highlight');
+  } 
+  view.removeUnhighlight();  
+  
   let id = $(this).attr('id').match(/\d+/)[0];
   model.getParkData('attractions')
     .then(attractions=>{
@@ -115,9 +116,8 @@ const searchAttractionsByArea = function(e){
 
 
 const searchAttractionsByType = function(){
-  for(let i = 1; i < 9; i++){
-    $(`#item${i}`).removeClass("highlight");
-  }
+  $(".gridItem").removeClass('highlight');
+
   view.removeUnhighlight();
 
   let typeNum = $(this).val();
