@@ -119,10 +119,11 @@ const searchAttractionsByName = (e)=>{
   for(let i = 1; i < 9; i++){
     $(`#item${i}`).removeClass("highlight");
   }
-  view.removeUnhighlight();
-  removeLocation();
-  
+
    if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
+     view.removeUnhighlight();
+     removeLocation();
+    
       let searchInput = $('#searchInput').val();
       model.getParkData('attractions')
         .then(attractions=>{

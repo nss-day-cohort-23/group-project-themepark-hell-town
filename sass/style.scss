@@ -62,7 +62,10 @@ header{
 .searchIcon{
   height: .76em;
 }
-
+#searchInput:focus{
+  outline: none;
+  box-shadow: 0px 0px 4px 1px #f20505;
+}
 
 // selections
 #timeDiv{
@@ -82,6 +85,11 @@ header{
 #typeSelect{
   width: 8.3em;
   height: 25px;
+}
+button:hover{
+  cursor: pointer;
+  border: 1px solid darkturquoise;
+  box-shadow: 0px 0px 4px 0.4px #00ced1;
 }
 
 
