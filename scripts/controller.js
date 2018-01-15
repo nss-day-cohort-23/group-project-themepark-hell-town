@@ -34,12 +34,52 @@ module.exports.activateListeners = ()=>{
     view.highlightSelectedArea(item); 
   });
 
+  $(document).on("click", ".itinerary", addToItinerary);
+  $('#showItinerary').on("click",getItinerary);
+  $(document).on("click", '#deleteFromItinerary', deleteFromItinerary);
+
    //listnr for type select
    $('#typeSelect').change(searchAttractionsByType);
 
 };
 
+const getItinerary = ()=>{
+  model.getParkData('itinerary')
+    .then(ids=>{
+      let idsArray = Object.keys(ids);
+      let valuesArray = [];
+      idsArray.forEach(function(value, index){
+          valuesArray.push(ids[value]);
 
+        });
+      view.printItinerary(valuesArray);
+    });
+};
+
+const addToItinerary = function(){
+  //  console.log('this:', this.parentNode.parentNode.id);
+   let testText = JSON.stringify(this.parentNode.parentNode.id);
+  $.ajax({
+    method: "POST",
+    url:"https://theme-park-project.firebaseio.com/theme-park/itinerary.json",
+    data: testText
+  }).done(response =>{
+    console.log('attraction number: ', this.parentNode.parentNode.id);
+  });
+};
+
+const deleteFromItinerary = function(){
+   console.log('this:', this.parentNode.parentNode.id);
+
+  let testText = JSON.stringify(this.parentNode.parentNode.id);
+  // $.ajax({
+  //   method: "DELETE",
+  //   url:`https://theme-park-project.firebaseio.com/theme-park/itinerary/${}.json`,
+  //   data: testText
+  // }).done(response =>{
+  //   console.log('attraction number: ', this.parentNode.parentNode.id);
+  // });
+};
 
 module.exports.searchAttractionsByTime = () => {
   for(let i = 1; i < 9; i++){
@@ -58,8 +98,12 @@ module.exports.searchAttractionsByTime = () => {
           attractionTimes.forEach((time) => {
             let formattedTime = model.formatTimes(time);
             if (+formattedTime - (+timeVal) <= 100 && +formattedTime - (+timeVal) >= 0){
-              listToHighlight.push(attraction.area_id);
-              attractionSchedule.push(attraction);
+              if(!attractionSchedule.includes(attraction)){
+                listToHighlight.push(attraction.area_id);
+                attractionSchedule.push(attraction);
+              } else{
+                console.log('tesrter',attraction);
+              }
             }
           });
         }
