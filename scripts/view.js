@@ -42,10 +42,13 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
       .then(types=>{
          types.forEach(function(type){
             attractionsArray.forEach(function(attraction){
+              let attractionTimes = '';
                if(attraction.type_id === type.id){
+                if(attraction.times){ attractionTimes = attraction.times.join(', ');}
+                let area_id = attraction.area_id;
                      $('#descriptionArea').append(`
-                     <div class='attraction' id='${attraction.id}'>
-                        <p><b>${attraction.name}</b> - <span>${type.name}</span></p>
+                     <div class='attraction item${area_id}' id='${attraction.id}'>
+                       <p><b>${attraction.name}</b> - <span>${type.name}</span></p>
                         <p class='attrDescription' style='display:none'>
                        ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attraction.times + `</b>`: '') + `
                        
@@ -64,15 +67,17 @@ module.exports.printAttractionsByTime = (arr)=>{
       .then(areas=>{
          areas.forEach(function(area){
             arr.forEach(function(attraction){
+              let attractionTimes = '';
               console.log(attraction, 'attr');
                if(attraction.area_id === area.id){
                      $('#descriptionArea').append(`
-                        <div class='attraction' id='${attraction.id}'>
-                        <p><b> ${attraction.name}</b> - <span style='color:#${area.colorTheme}'>${area.name}</span></p>
-                        <p class='attrDescription' style='display:none'>${attraction.description}<br><br>
-                        <b>Start Times: ${attraction.times}<b></p>
-                        </div>
-                     `);
+                        <div class='attraction item${area.id}' id='${attraction.id}'>
+                       <p><b> ${attraction.name}</b> - <span style='color:#${area.colorTheme}'>${area.name}</span></p>
+                        <p class='attrDescription' style='display:none'>
+                        ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
+                        
+                        </p> </div>
+               `);
                }
             });
          });
@@ -88,3 +93,35 @@ module.exports.highlightAreas = (list) =>{
     $(`#item${area}`).addClass("highlight");
   });
 };
+
+module.exports.highlightSelectedArea = (item) => {
+  $('.gridItem').not($(`#${item}`)).toggleClass('unhighlight');
+};
+module.exports.removeUnhighlight = ()=>{
+  $('.gridItem').removeClass('unhighlight');
+};
+
+module.exports.clearInputs= (input) => {
+  let $type = $('#typeSelect');
+  let $search = $('#searchInput');
+  let $time = $('#time');
+    switch (input) {
+      case 'time':
+      $search.val('');
+      $type.val('');
+      break;
+      case 'name':
+      $type.val('');
+      $('#time').val(new Date().toLocaleTimeString([], { hour: "numeric", minute: "numeric"}));
+      break;
+      case 'area':
+      $type.val('');
+      $('#time').val(new Date().toLocaleTimeString([], { hour: "numeric", minute: "numeric"}));
+      $search.val('');
+      break;
+      case 'type':
+      $search.val('');
+      $('#time').val(new Date().toLocaleTimeString([], { hour: "numeric", minute: "numeric"}));
+      break;
+    }
+  };

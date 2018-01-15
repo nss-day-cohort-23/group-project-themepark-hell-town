@@ -23,10 +23,15 @@ module.exports.activateListeners = ()=>{
   
    //click on attraction, get description
    $(document).on('click', ".attraction", function() {
+
+    // click on an attraction besides currently selected one, it removes unhighlight from all
+    if ($(this).find('.attrDescription').is(':hidden'))
+      $('.gridItem').removeClass('unhighlight');  
+    
     $(this).find('.attrDescription').slideToggle();
     $('#descriptionArea').find('.attrDescription').not($(this).find('.attrDescription')).hide();
-
-
+    let item = $(this).attr('class').split(' ')[1];
+    view.highlightSelectedArea(item); 
   });
 
    //listnr for type select
@@ -34,15 +39,14 @@ module.exports.activateListeners = ()=>{
 
 };
 
-function clearInputs(){
 
-  
-}
 
 module.exports.searchAttractionsByTime = () => {
   for(let i = 1; i < 9; i++){
     $(`#item${i}`).removeClass("highlight");
-  }
+  } 
+   view.removeUnhighlight();
+
   let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
   let listToHighlight = [];
@@ -63,6 +67,7 @@ module.exports.searchAttractionsByTime = () => {
       view.printAttractionsByTime(attractionSchedule);
       view.highlightAreas(listToHighlight);
     });
+    view.clearInputs('time');
 };
 
 
@@ -70,6 +75,8 @@ const searchAttractionsByName = (e)=>{
   for(let i = 1; i < 9; i++){
     $(`#item${i}`).removeClass("highlight");
   }
+  view.removeUnhighlight();
+
    if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
       let searchInput = $('#searchInput').val();
       model.getParkData('attractions')
@@ -84,6 +91,7 @@ const searchAttractionsByName = (e)=>{
             view.printAttractionsByArea(searchResults);
         });
         });
+        view.clearInputs('name');
     }
 };
 
@@ -91,6 +99,8 @@ const searchAttractionsByArea = function(e){
   for(let i = 1; i < 9; i++){
     $(`#item${i}`).removeClass("highlight");
   }
+  view.removeUnhighlight();
+
   $(this).addClass("highlight");
   let id = $(this).attr('id').match(/\d+/)[0];
   model.getParkData('attractions')
@@ -100,6 +110,7 @@ const searchAttractionsByArea = function(e){
         view.printAttractionsByArea(attractionsArr);
     }); 
   });
+  view.clearInputs('area');
 };
 
 
@@ -107,6 +118,8 @@ const searchAttractionsByType = function(){
   for(let i = 1; i < 9; i++){
     $(`#item${i}`).removeClass("highlight");
   }
+  view.removeUnhighlight();
+
   let typeNum = $(this).val();
   if(typeNum !== ""){
     model.getParkData('attractions')
@@ -122,6 +135,7 @@ const searchAttractionsByType = function(){
         view.highlightAreas(listToHighlight);
       });
   }
+  view.clearInputs('type');
 };
 
 
