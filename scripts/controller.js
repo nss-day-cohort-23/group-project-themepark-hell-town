@@ -85,7 +85,8 @@ module.exports.searchAttractionsByTime = () => {
   for(let i = 1; i < 9; i++){
     $(`#item${i}`).removeClass("highlight");
   } 
-   view.removeUnhighlight();
+  view.removeUnhighlight();
+  removeLocation();
 
   let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
@@ -119,7 +120,8 @@ const searchAttractionsByName = (e)=>{
     $(`#item${i}`).removeClass("highlight");
   }
   view.removeUnhighlight();
-
+  removeLocation();
+  
    if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
       let searchInput = $('#searchInput').val();
       model.getParkData('attractions')
@@ -143,6 +145,7 @@ const searchAttractionsByArea = function(e){
     $(`#item${i}`).removeClass("highlight");
   }
   view.removeUnhighlight();
+  removeLocation();
 
   $(this).addClass("highlight");
   let id = $(this).attr('id').match(/\d+/)[0];
@@ -162,6 +165,7 @@ const searchAttractionsByType = function(){
     $(`#item${i}`).removeClass("highlight");
   }
   view.removeUnhighlight();
+  removeLocation();
 
   let typeNum = $(this).val();
   if(typeNum !== ""){
@@ -187,8 +191,7 @@ const searchAttractionsById = function(attId){
     .then(attractions=>{
       attractions.forEach((attraction)=>{
         if (attraction.id === +attId){
-          $(`.gridItem`).children('.gridCells').children().removeClass("cell-highlight");
-          $(`.gridItem`).children('p').removeClass("nameFade");
+          removeLocation();
 
           $(`#item${attraction.area_id}`).children('.gridCells')
             .children(`.location${attraction.location}`)
@@ -198,6 +201,11 @@ const searchAttractionsById = function(attId){
         }
       });
     });
+};
+
+const removeLocation = ()=>{
+  $(`.gridItem`).children('.gridCells').children().removeClass("cell-highlight");
+  $(`.gridItem`).children('p').removeClass("nameFade");
 };
 
 

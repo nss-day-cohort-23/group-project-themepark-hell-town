@@ -111,6 +111,7 @@ header{
 }
 .gridItem:hover{
   opacity: .8;
+  transition: opacity .1s ease-in-out;
   cursor: pointer;
 }
 #areaGrid #item5{
@@ -214,8 +215,5 @@ header{
   margin: auto;
 }
 footer{
-  // background-position-y: -.3em;
   background-color: rgba(250,250,250,.95);
-  // background-size: 2.5em 1.8em;
-  // background-image: url(../images/wire.svg);
 }
