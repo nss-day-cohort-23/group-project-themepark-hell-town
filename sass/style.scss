@@ -6,6 +6,10 @@
   0%,100% { opacity: 0 }
   50% { opacity: 1 }
 }
+@keyframes faded {
+  0%,100% { opacity: 0 }
+  20%,60% { opacity: 1 }
+}
 
 body{
    margin: 0 auto;
@@ -72,6 +76,25 @@ header{
 }
 .reveal{
   animation: fade 4s linear;
+  display: inherit;
+}
+.easter2{
+  position: absolute;
+  z-index: 1;
+  transform: translate(1.25em, 2.25em);
+  width: 53.5%;
+  height: 48%;
+  display: none;
+  opacity: 0;
+}
+.skullSpan{
+  position: absolute;
+  height: 22%;
+  width: 17.5%;
+  transform: translate(7.65em, 5.27em);
+}
+.reveal2{
+  animation: faded 7s linear;
   display: inherit;
 }
 
