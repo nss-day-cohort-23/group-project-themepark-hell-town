@@ -23,6 +23,8 @@ module.exports.activateListeners = ()=>{
   
    //click on attraction, get description
    $(document).on('click', ".attraction", function() {
+    let id = this.id;
+    searchAttractionsById(id);
 
     // click on an attraction besides currently selected one, it removes unhighlight from all
     if ($(this).find('.attrDescription').is(':hidden'))
@@ -94,7 +96,8 @@ module.exports.searchAttractionsByTime = () => {
   for(let i = 1; i < 9; i++){
     $(`#item${i}`).removeClass("highlight");
   } 
-   view.removeUnhighlight();
+  view.removeUnhighlight();
+  removeLocation();
 
   let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
@@ -111,7 +114,6 @@ module.exports.searchAttractionsByTime = () => {
                 listToHighlight.push(attraction.area_id);
                 attractionSchedule.push(attraction);
               } else{
-                console.log('excluded',attraction);
               }
             }
           });
@@ -129,12 +131,13 @@ const searchAttractionsByName = (e)=>{
     $(`#item${i}`).removeClass("highlight");
   }
   view.removeUnhighlight();
-
-   if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
-      let searchInput = $('#searchInput').val();
-      model.getParkData('attractions')
-        .then(attractions=>{
-          model.retrieveAreaByAttraction(attractions, searchInput)
+  if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
+    removeLocation();
+    
+    let searchInput = $('#searchInput').val();
+    model.getParkData('attractions')
+      .then(attractions=>{
+        model.retrieveAreaByAttraction(attractions, searchInput)
         .then(searchResults=>{
             let listOfAreasToHighlight = [];
               searchResults.forEach(function(attraction){
@@ -153,6 +156,7 @@ const searchAttractionsByArea = function(e){
     $(`#item${i}`).removeClass("highlight");
   }
   view.removeUnhighlight();
+  removeLocation();
 
   $(this).addClass("highlight");
   let id = $(this).attr('id').match(/\d+/)[0];
@@ -172,6 +176,7 @@ const searchAttractionsByType = function(){
     $(`#item${i}`).removeClass("highlight");
   }
   view.removeUnhighlight();
+  removeLocation();
 
   let typeNum = $(this).val();
   if(typeNum !== ""){
@@ -189,6 +194,29 @@ const searchAttractionsByType = function(){
       });
   }
   view.clearInputs('type');
+};
+
+
+const searchAttractionsById = function(attId){
+  model.getParkData('attractions')
+    .then(attractions=>{
+      attractions.forEach((attraction)=>{
+        if (attraction.id === +attId){
+          removeLocation();
+
+          $(`#item${attraction.area_id}`).children('.gridCells')
+            .children(`.location${attraction.location}`)
+              .addClass("cell-highlight");
+
+          $(`#item${attraction.area_id}`).children('p').addClass("nameFade");
+        }
+      });
+    });
+};
+
+const removeLocation = ()=>{
+  $(`.gridItem`).children('.gridCells').children().removeClass("cell-highlight");
+  $(`.gridItem`).children('p').removeClass("nameFade");
 };
 
 

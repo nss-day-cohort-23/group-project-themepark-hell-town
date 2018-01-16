@@ -8,22 +8,27 @@ body{
    min-height: 100vh;
    display: flex;
    flex-direction: column;
-}
-
-main{
-   padding: .7em 2em;
-   flex: 1;
    background-image: url("../images/coaster.jpg");
    background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
 }
 
+main{
+   padding: .7em 2em;
+   flex: 1;
+  //  background-image: url("../images/coaster.jpg");
+  //  background-repeat: no-repeat;
+  //  background-position: center;
+  //  background-size: cover;
+}
+
+
 // Nav styling
 header{
   box-shadow: 0 0.1px 2.4px -0.5px;
   z-index: 1;
-  background-color: rgba(250,250,250,.9);
+  background-color: rgba(250,250,250,.95);
 }
 .nav{
   height: 4.75em;
@@ -57,7 +62,10 @@ header{
 .searchIcon{
   height: .76em;
 }
-
+#searchInput:focus{
+  outline: none;
+  box-shadow: 0px 0px 4px 1px #f20505;
+}
 
 // selections
 #timeDiv{
@@ -78,11 +86,12 @@ header{
   width: 8.3em;
   height: 25px;
 }
-
-//Content Wrap (description area/ grid map)
-.contentWrapper{
-
+button:hover{
+  cursor: pointer;
+  border: 1px solid darkturquoise;
+  box-shadow: 0px 0px 4px 0.4px #00ced1;
 }
+
 
 
 // Grid styling
@@ -105,11 +114,13 @@ header{
   opacity: .97;
 }
 .gridItem{
-   padding-top: 1.8em;
+  padding: 1.8em 0.5em;
+  position: relative;
 }
 .gridItem:hover{
   opacity: .8;
-  cursor: url('../images/trident.png'), auto;
+  transition: opacity .1s ease-in-out;
+  cursor: pointer;
 }
 #areaGrid #item5{
   grid-column-start: 3;
@@ -126,11 +137,34 @@ header{
 #item8{
   border-bottom-right-radius: 20px;
 }
+.gridItem p{
+  margin: 0;
+}
+.gridCells{
+  display: grid;
+  grid-template-rows: .9em .9em .9em;
+  grid-template-columns: 28px 28px 28px 28px;
+  position: absolute;
+  grid-row-gap: .5em;
+  grid-column-gap: .64em;
+  bottom: .68em;
+  left: .35em;
+}
+.cell-highlight{
+  background-image: url("../images/location2.png");
+  background-repeat: no-repeat;
+  background-size: 27px;
+  // opacity: .85;
+}
+.nameFade {
+  opacity: .38;
+}
+
 
 
 // discription area
 #descriptionArea{
-  height: 28.4em;
+  height: 32.29em;
   overflow: scroll;
   border: 1px solid black;
   width: 33.5%;
@@ -140,11 +174,14 @@ header{
   font-family: Quicksand, sans-serif;
   background-color: rgba(244,245,249,.97);
 }
-#descriptionArea:hover{
-  cursor: url('../images/tridentBlk.png'), auto;
-}
+// #descriptionArea:hover{
+//   cursor: pointer;
+// }
 .attraction{
   border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.attraction:hover{
+  cursor: pointer;
 }
 .attraction p{
   margin: 15px 0px;
@@ -152,7 +189,8 @@ header{
 .attraction span{
   font-size: 13.7px;
   font-style: italic;
-  letter-spacing: .3px;
+  letter-spacing: .45px;
+  font-weight: 600;
 }
 .attraction span:hover{
   opacity: .6;
@@ -160,7 +198,7 @@ header{
 
 
 .highlight{
-  border: 10px solid rgba(255,0,0,.9);
+  border: 4.6px outset rgba(255,255,255,.95);
   // box-shadow: inset 0px 0px 5px 5px rgba(255,0,0,.9);
 }
 
@@ -186,8 +224,5 @@ header{
   margin: auto;
 }
 footer{
-  background-position-y: -.3em;
-  background-color: ghostwhite;
-  background-size: 2.5em 1.8em;
-  background-image: url(../images/wire.svg);
+  background-color: rgba(250,250,250,.95);
 }

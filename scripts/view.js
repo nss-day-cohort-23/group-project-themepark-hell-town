@@ -29,7 +29,22 @@ module.exports.printAreas = (areas)=>{
       $('#areaGrid').append(
          `<div class='gridItem' id='item${area.id}' 
          style='background-color:#${area.colorTheme};'>
-         ${area.name}</div>`
+         <p>${area.name}</p>
+         <span class='gridCells'>
+          <cell-item class='location1'></cell-item>
+          <cell-item class='location2'></cell-item>
+          <cell-item class='location3'></cell-item>
+          <cell-item class='location4'></cell-item>
+          <cell-item class='location5'></cell-item>
+          <cell-item class='location6'></cell-item>
+          <cell-item class='location7'></cell-item>
+          <cell-item class='location8'></cell-item>
+          <cell-item class='location9'></cell-item>
+          <cell-item class='location10'></cell-item>
+          <cell-item class='location11'></cell-item>
+          <cell-item class='location12'></cell-item>
+         </span>
+         </div>`
       );
    });
 };
@@ -59,7 +74,7 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
          });
       });
 };
-
+ 
 //populate side bar w/ attractions by time
 module.exports.printAttractionsByTime = (arr)=>{
    $('#descriptionArea').html('');
