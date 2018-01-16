@@ -45,7 +45,7 @@ module.exports.activateListeners = ()=>{
 
   
   //Logo Click
-  $('#brand').click(function(){
+  $('#brand').children().first().click(function(){
     let trans = $('.easter').addClass('reveal');
     setTimeout(function () {
       trans.removeClass('reveal');
