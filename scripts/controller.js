@@ -70,8 +70,10 @@ const getItinerary = ()=>{
 };
 
 const addToItinerary = function(){
-  let attrackid = this.parentNode.parentNode.id;
-  let presendText = {attr_id: attrackid};
+  let fulltext = $(this.parentNode.parentNode).html();
+
+  let attractionId = this.parentNode.parentNode.id;
+  let presendText = {attr_id: attractionId};
   let sendText = JSON.stringify(presendText);
   model.getParkData('itinerary')
   .then(ids=>{
@@ -86,6 +88,8 @@ const addToItinerary = function(){
     data: sendText
   }).done(response =>{
     console.log('response: ',response);
+    $(this.parentNode.parentNode).find('p').text("Added to Itinerary!");
+    setTimeout(function(){$(`#${attractionId}`).html(fulltext).find('.attrDescription').hide();}, 2000);
   });
 };
 
@@ -97,7 +101,9 @@ const deleteFromItinerary = function(){
     url:`https://theme-park-project.firebaseio.com/theme-park/itinerary/${attractionToDeletedID}.json`,
     data: testText
   }).done(response =>{
-    getItinerary();    
+    console.log('deleted!!', this.parentNode.parentNode.id);
+    $(`#${this.parentNode.parentNode.id}`).html(`<p><b>Removed from Itinerary!</b></p>`);
+    setTimeout(getItinerary, 2000);    
   });
 };
 
