@@ -119,15 +119,14 @@ const searchAttractionsByName = (e)=>{
   for(let i = 1; i < 9; i++){
     $(`#item${i}`).removeClass("highlight");
   }
-
-   if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
-     view.removeUnhighlight();
-     removeLocation();
+  view.removeUnhighlight();
+  if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
+    removeLocation();
     
-      let searchInput = $('#searchInput').val();
-      model.getParkData('attractions')
-        .then(attractions=>{
-          model.retrieveAreaByAttraction(attractions, searchInput)
+    let searchInput = $('#searchInput').val();
+    model.getParkData('attractions')
+      .then(attractions=>{
+        model.retrieveAreaByAttraction(attractions, searchInput)
         .then(searchResults=>{
             let listOfAreasToHighlight = [];
               searchResults.forEach(function(attraction){
