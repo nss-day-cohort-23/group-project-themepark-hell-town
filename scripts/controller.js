@@ -44,12 +44,18 @@ module.exports.activateListeners = ()=>{
   $('#typeSelect').change(searchAttractionsByType);
 
   
-  //Logo Click
+  //Logo/Skull Click
   $('#brand').children().first().click(function(){
     let trans = $('.easter').addClass('reveal');
     setTimeout(function () {
       trans.removeClass('reveal');
     }, 4000);
+  });
+  $('.skullSpan').click(function(){
+    let show = $('.easter2').addClass('reveal2');
+    setTimeout(function () {
+      show.removeClass('reveal2');
+    }, 7000);
   });
 
 };
