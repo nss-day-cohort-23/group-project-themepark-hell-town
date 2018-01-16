@@ -36,7 +36,7 @@ module.exports.activateListeners = ()=>{
 
   $(document).on("click", ".itinerary", addToItinerary);
   $('#showItinerary').on("click",getItinerary);
-  $(document).on("click", '#deleteFromItinerary', deleteFromItinerary);
+  $(document).on("click", '.deleteFromItinerary', deleteFromItinerary);
 
    //listnr for type select
    $('#typeSelect').change(searchAttractionsByType);
@@ -46,39 +46,48 @@ module.exports.activateListeners = ()=>{
 const getItinerary = ()=>{
   model.getParkData('itinerary')
     .then(ids=>{
+      $.each(ids, function(entry){
+        ids[entry].entry_id = entry;
+      });
       let idsArray = Object.keys(ids);
       let valuesArray = [];
       idsArray.forEach(function(value, index){
           valuesArray.push(ids[value]);
-
         });
       view.printItinerary(valuesArray);
     });
 };
 
 const addToItinerary = function(){
-  //  console.log('this:', this.parentNode.parentNode.id);
-   let testText = JSON.stringify(this.parentNode.parentNode.id);
+  let attrackid = this.parentNode.parentNode.id;
+  let presendText = {attr_id: attrackid};
+  let sendText = JSON.stringify(presendText);
+  model.getParkData('itinerary')
+  .then(ids=>{
+    $.each(ids, function(entry){
+      ids[entry].entry_id = entry;
+    });
+  });
   $.ajax({
     method: "POST",
     url:"https://theme-park-project.firebaseio.com/theme-park/itinerary.json",
-    data: testText
+    dataType: "json",
+    data: sendText
   }).done(response =>{
-    console.log('attraction number: ', this.parentNode.parentNode.id);
+    console.log('response: ',response);
   });
 };
 
 const deleteFromItinerary = function(){
-   console.log('this:', this.parentNode.parentNode.id);
-
+  let attractionToDeletedID = this.parentNode.parentNode.id;
   let testText = JSON.stringify(this.parentNode.parentNode.id);
-  // $.ajax({
-  //   method: "DELETE",
-  //   url:`https://theme-park-project.firebaseio.com/theme-park/itinerary/${}.json`,
-  //   data: testText
-  // }).done(response =>{
-  //   console.log('attraction number: ', this.parentNode.parentNode.id);
-  // });
+  $.ajax({
+    method: "DELETE",
+    url:`https://theme-park-project.firebaseio.com/theme-park/itinerary/${attractionToDeletedID}.json`,
+    data: testText
+  }).done(response =>{
+    getItinerary();    
+  });
 };
 
 module.exports.searchAttractionsByTime = () => {
@@ -102,7 +111,7 @@ module.exports.searchAttractionsByTime = () => {
                 listToHighlight.push(attraction.area_id);
                 attractionSchedule.push(attraction);
               } else{
-                console.log('tesrter',attraction);
+                console.log('excluded',attraction);
               }
             }
           });
