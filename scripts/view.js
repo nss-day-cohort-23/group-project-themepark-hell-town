@@ -144,7 +144,6 @@ module.exports.clearInputs= (input) => {
 
   module.exports.printItinerary = (valuesArray)=>{
     $('#descriptionArea').html('');
-    $('#descriptionArea').html('');
     let areasArray = [];
     let typesArray = [];
     model.getParkData('areas')
@@ -166,7 +165,7 @@ module.exports.clearInputs= (input) => {
           attractions.forEach(function(attraction){
              valuesArray.forEach(function(entry){
                let attractionTimes = '';
-               if(attraction.id === +entry){
+               if(attraction.id === +entry.attr_id){
                  if(attraction.times){ attractionTimes = attraction.times.join(', ');}
                  let area_id = attraction.area_id;
                  let type_id = attraction.type_id;
@@ -175,13 +174,14 @@ module.exports.clearInputs= (input) => {
                    if(area_id === area.id){
                      if(type_id === type.id){
                        $('#descriptionArea').append(`
-                       <div class='attraction item${area_id}' id='${attraction.id}'>
+                       <div class='attraction item${area_id}' id='${entry.entry_id}'>
                        <p><b>${attraction.name}</b> - <span>(${type.name})</span>
-                       <span style='color:#${area.colorTheme}'>${area.name}</span></p>
+                       <span style='color:#${area.colorTheme}'>${area.name}</span>
+                       </p>
                        <p class='attrDescription' style='display:none'>
                        ${attraction.description}` + (attraction.times? `<br>
                        <br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
-                       <button id='deleteFromItinerary' type='button'>Remove from Itinerary</button>
+                       <br><button class='deleteFromItinerary' type='button'>Remove</button>
                        </p> </div>
                        `);
                       }
