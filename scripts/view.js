@@ -9,6 +9,7 @@ module.exports.populatePage=()=>{
       <ul class='navItems'>
          <li id='brand'>Hell Town
           <img class="coaster" src="images/wheel.svg">
+          <img class="easter" src="images/easter1.gif">
          </li>
          <li>
             <input id='searchInput' type="text" placeholder=" Search">

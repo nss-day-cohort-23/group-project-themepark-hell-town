@@ -40,8 +40,17 @@ module.exports.activateListeners = ()=>{
   $('#showItinerary').on("click",getItinerary);
   $(document).on("click", '.deleteFromItinerary', deleteFromItinerary);
 
-   //listnr for type select
-   $('#typeSelect').change(searchAttractionsByType);
+  //listnr for type select
+  $('#typeSelect').change(searchAttractionsByType);
+
+  
+  //Logo Click
+  $('#brand').children().first().click(function(){
+    let trans = $('.easter').addClass('reveal');
+    setTimeout(function () {
+      trans.removeClass('reveal');
+    }, 4000);
+  });
 
 };
 
@@ -217,6 +226,10 @@ const searchAttractionsById = function(attId){
 const removeLocation = ()=>{
   $(`.gridItem`).children('.gridCells').children().removeClass("cell-highlight");
   $(`.gridItem`).children('p').removeClass("nameFade");
+};
+
+const removeReveal = ()=>{
+  $('.easter').removeClass('reveal');
 };
 
 

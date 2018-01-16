@@ -2,6 +2,10 @@
     font-family: murder;
     src: url('../css/fonts/youmurdererbb_reg.otf');
 }
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}
 
 body{
    margin: 0 auto;
@@ -49,10 +53,26 @@ header{
   font-size: 3.65em;
   letter-spacing: 1px;
 }
+#brand:first-child:hover{
+  // cursor: pointer;
+}
 .coaster{
   height: 58px;
   transform: translate(-125px, 10px);
   opacity: 0.4;
+}
+.easter{
+  position: absolute;
+  width: 5.8em;
+  transform: translate(3.3em, -1.4em);
+  height: 2.36em;
+  box-shadow: 0 0 19px 0.1px;
+  opacity: 0;
+  display: none;
+}
+.reveal{
+  animation: fade 4s linear;
+  display: inherit;
 }
 
 #searchInput{
@@ -72,7 +92,7 @@ header{
   padding: 3px 0px;
   width: 35.5%;
   text-align: center;
-  margin-bottom: .6em;
+  margin-bottom: .5em;
 }
 #timeDiv * {
   width: 5.25em;
@@ -81,6 +101,12 @@ header{
   padding: 5px 5px;
   font-size: .73em;
   font-weight: 500;
+  letter-spacing: .5px;
+  background-color: rgba(220,90,100,1);
+  color: rgba(250,250,250,1);
+}
+.time{
+  width: 5.46em;
 }
 #typeSelect{
   width: 8.3em;
@@ -88,8 +114,8 @@ header{
 }
 button:hover{
   cursor: pointer;
-  border: 1px solid darkturquoise;
-  box-shadow: 0px 0px 4px 0.4px #00ced1;
+  border: 1px solid rgba(250,250,250,.95);
+  box-shadow: 0px 0px 4px 0.4px rgb(249, 243, 243);
 }
 
 
@@ -171,7 +197,7 @@ button:hover{
   float: left;
   border-radius: 19px;
   padding: 0.3em 1em;
-  font-family: Quicksand, sans-serif;
+  font-family: Quicksand, sans-serif; 
   background-color: rgba(244,245,249,.97);
 }
 // #descriptionArea:hover{

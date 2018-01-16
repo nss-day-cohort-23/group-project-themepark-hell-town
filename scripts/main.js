@@ -19,4 +19,3 @@ model.getParkData('areas')
    });    
 
 
- 
