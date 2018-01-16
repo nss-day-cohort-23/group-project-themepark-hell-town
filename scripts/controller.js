@@ -79,7 +79,7 @@ const addToItinerary = function(){
     data: sendText
   }).done(response =>{
     console.log('response: ',response);
-    $(this.parentNode.parentNode).find('p').html("<p><b>Added to Itinerary!</b></p>");
+    $(this.parentNode.parentNode).find('p').text("Added to Itinerary!");
     setTimeout(function(){$(`#${attractionId}`).html(fulltext).find('.attrDescription').hide();}, 2000);
   });
 };
