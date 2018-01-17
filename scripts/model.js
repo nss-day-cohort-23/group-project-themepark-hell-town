@@ -42,7 +42,8 @@ module.exports.retrieveAttractionsByProp = (attractions, val, key) => {
     resolve(attractionsArray);
   });
 };
-
+// bug was due to adding a '0' to the hours '10' and '11', so when they were sliced, it removed their last digit, making them '01'
+// also only need to add 12 to PM times
 module.exports.formatTimes =  (time) => {
   time = time.replace(/[\s]+/g, '');
   if(time.slice(0,2)!= '12' && time.slice(0,2)!= '11' && time.slice(0,2)!= '10'){
