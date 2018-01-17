@@ -166,7 +166,6 @@ const searchAttractionsByArea = function(e){
   $(`.gridItem`).removeClass("highlight");    
   view.removeUnhighlight();
   view.removeLocation();
-
   $(this).addClass("highlight");
   let id = $(this).attr('id').match(/\d+/)[0];
   model.getParkData('attractions')
@@ -181,12 +180,9 @@ const searchAttractionsByArea = function(e){
 
 
 const searchAttractionsByType = function(){
-  for(let i = 1; i < 9; i++){
-    $(`#item${i}`).removeClass("highlight");
-  }
+  $(`.gridItem`).removeClass("highlight");      
   view.removeUnhighlight();
   view.removeLocation();
-
   let typeNum = $(this).val();
   if(typeNum !== ""){
     model.getParkData('attractions')
@@ -205,7 +201,6 @@ const searchAttractionsByType = function(){
   view.clearInputs('type');
 };
 
-
 const searchAttractionsById = function(attId){
   model.getParkData('attractions')
     .then(attractions=>{
@@ -221,11 +216,8 @@ const searchAttractionsById = function(attId){
     });
 };
 
-
-
+// What does this do??? vvvv
 const removeReveal = ()=>{
   $('.easter').removeClass('reveal');
 };
-
-
 

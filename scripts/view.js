@@ -116,7 +116,6 @@ module.exports.clearInputs= (input) => {
                let attractionTimes = '';
                if(attraction.id === +entry.attr_id){
                 listToHighlight.push(+attraction.area_id);
-                console.log('area_id: ',attraction.area_id);
                  if(attraction.times){ attractionTimes = attraction.times.join(', ');}
                  let area_id = attraction.area_id;
                  let type_id = attraction.type_id;
@@ -143,7 +142,6 @@ module.exports.clearInputs= (input) => {
                 }
              });
             });
-            console.log('test',listToHighlight);
             module.exports.highlightAreas(listToHighlight);
           });
         };
