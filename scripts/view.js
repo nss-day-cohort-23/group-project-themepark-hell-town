@@ -64,9 +64,13 @@ module.exports.printAttractionsByArea = (attractionsArray)=>{
                 let area_id = attraction.area_id;
                      $('#descriptionArea').append(`
                      <div class='attraction item${area_id}' id='${attraction.id}'>
-                       <p><b>${attraction.name}</b> - <span>${type.name}</span></p>
+                       <p><b>${attraction.name}</b> - 
+                       
+                       <span>${type.name}</span></p>
+                       
                         <p class='attrDescription' style='display:none'>
-                       ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
+                       ${attraction.description}` +
+                        (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
                        <br><button class='itinerary' type='button'>Add to Itinerary</button>
                        </p> </div>
                      `);
@@ -86,11 +90,14 @@ module.exports.printAttractionsByTime = (arr)=>{
               let attractionTimes = '';
                if(attraction.area_id === area.id){
                   if(attraction.times){ attractionTimes = attraction.times.join(', ');}
+                  let area_id = attraction.area_id;
                      $('#descriptionArea').append(`
-                        <div class='attraction item${area.id}' id='${attraction.id}'>
-                       <p><b> ${attraction.name}</b> - <span style='color:#${area.colorTheme}'>${area.name}</span></p>
+                        <div class='attraction item${area_id}' id='${attraction.id}'>
+                       <p><b> ${attraction.name}</b> - 
+                       <span style='color:#${area.colorTheme}'>${area.name}</span></p>
                         <p class='attrDescription' style='display:none'>
-                        ${attraction.description}` + (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
+                        ${attraction.description}` + 
+                        (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
                         <br><button class='itinerary' type='button'>Add to Itinerary</button>
                         </p> </div>
                `);
@@ -196,3 +203,33 @@ module.exports.clearInputs= (input) => {
           });
         };
        
+
+
+
+
+
+
+module.exports.printAttractionsFoSho = (attractionsArray, query)=>{
+  $('#descriptionArea').html('');
+  model.getParkData(query)
+      .then(datas=>{
+        if(query === 'attraction_types'){query = "type";}else if(query === "areas"){query = "area";}
+        datas.forEach(function(dataItem){
+            attractionsArray.forEach(function(attraction){
+              let attractionTimes = '';
+              if(attraction[`${query}_id`] === dataItem.id){
+                  if(attraction.times){ attractionTimes = attraction.times.join(', ');}
+                  let area_id = attraction.area_id;
+                    $('#descriptionArea').append(
+                      `<div class='attraction item${area_id}' id='${attraction.id}'>
+                      <p><b> ${attraction.name}</b> - ` + 
+                      (dataItem.colorTheme? `<span style='color:#${dataItem.colorTheme}'>${dataItem.name}</span></p>`: `<span>${dataItem.name}</span></p>`)+
+                      `<p class='attrDescription' style='display:none'>${attraction.description}` + 
+                      (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + 
+                      `<br><button class='itinerary' type='button'>Add to Itinerary</button></p> </div>`
+                    );
+              }
+            });
+        });
+      });
+};
