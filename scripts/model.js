@@ -44,12 +44,9 @@ module.exports.retrieveAttractionsByProp = (attractions, val, key) => {
 };
 
 module.exports.formatTimes =  (time) => {
-  console.log('time at top of formatter: ',time);
   time = time.replace(/[\s]+/g, '');
   if(time.slice(0,2)!= '12' && time.slice(0,2)!= '11' && time.slice(0,2)!= '10'){
     time = '0' + time;
-    console.log('time after first condition: ',time);
-    // time.indexOf('P') > -1
   }else if(time.slice(0,2) == '12' && time.indexOf('A') > -1){
     time = '24' + time.slice(3);
   }
@@ -59,7 +56,6 @@ module.exports.formatTimes =  (time) => {
     time = Added + time.slice(3);
   }
   let result = time.replace(/[^0-9]+/g, '');
-  console.log('time at end of format: ',time, result);
   return result;
 };
 

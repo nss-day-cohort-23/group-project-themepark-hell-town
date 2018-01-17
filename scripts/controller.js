@@ -115,7 +115,6 @@ module.exports.searchAttractionsByTime = () => {
   removeLocation();
   let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
-  console.log('timeVal INITIAL:',timeVal, "should be: ", $('#time').val());
   let listToHighlight = [];
   model.getParkData('attractions')
     .then(attractions => {
@@ -126,10 +125,7 @@ module.exports.searchAttractionsByTime = () => {
             let formattedTime = model.formatTimes(time);
             if (+formattedTime - (+timeVal) <= 100 && +formattedTime - (+timeVal) >= 0){
               if(!attractionSchedule.includes(attraction)){
-                console.log('formattedTime: ',formattedTime);
-                console.log('timeVal: ',+timeVal);
                 listToHighlight.push(attraction.area_id);
-                console.log('attraction: ',attraction);
                 attractionSchedule.push(attraction);
               } 
             }
