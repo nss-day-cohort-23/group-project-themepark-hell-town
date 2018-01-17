@@ -115,7 +115,7 @@ module.exports.searchAttractionsByTime = () => {
   removeLocation();
   let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
-  console.log('timeVal INITIAL:',timeVal);
+  console.log('timeVal INITIAL:',timeVal, "should be: ", $('#time').val());
   let listToHighlight = [];
   model.getParkData('attractions')
     .then(attractions => {
