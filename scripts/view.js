@@ -1,28 +1,25 @@
 "use strict";
 const model = require('./model'); 
 
-
 // fill page w html content
 module.exports.populatePage=()=>{
   let d = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
    $('.nav').append(`
-      <ul class='navItems'>
-         <li id='brand'>Hell Town
-          <img class="coaster" src="images/wheel.svg">
-          <img class="easter" src="images/easter1.gif">
-         </li>
-         <li>
-            <input id='searchInput' type="text" placeholder=" Search">
-            <img class="searchIcon" src="images/magnifier.svg">
-         </li>
-      </ul>
+    <ul class='navItems'>
+        <li id='brand'>Hell Town
+        <img class="coaster" src="images/wheel.svg">
+        <img class="easter" src="images/easter1.gif">
+        </li>
+        <li>
+          <input id='searchInput' type="text" placeholder=" Search">
+          <img class="searchIcon" src="images/magnifier.svg">
+        </li>
+    </ul>
    `);
-
    $('footer').append(`
       <div class='footer'><p>Copyright ${d}</p></div>
    `);
 };
-
 
 //populate css grid w/ color coded areas
 module.exports.printAreas = (areas)=>{
@@ -49,69 +46,9 @@ module.exports.printAreas = (areas)=>{
       );
    });
 };
-
-
-//populate side bar w/ attractions by area
-module.exports.printAttractionsByArea = (attractionsArray)=>{
-   $('#descriptionArea').html('');
-   model.getParkData('attraction_types')
-      .then(types=>{
-         types.forEach(function(type){
-            attractionsArray.forEach(function(attraction){
-              let attractionTimes = '';
-               if(attraction.type_id === type.id){
-                if(attraction.times){ attractionTimes = attraction.times.join(', ');}
-                let area_id = attraction.area_id;
-                     $('#descriptionArea').append(`
-                     <div class='attraction item${area_id}' id='${attraction.id}'>
-                       <p><b>${attraction.name}</b> - 
-                       
-                       <span>${type.name}</span></p>
-                       
-                        <p class='attrDescription' style='display:none'>
-                       ${attraction.description}` +
-                        (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
-                       <br><button class='itinerary' type='button'>Add to Itinerary</button>
-                       </p> </div>
-                     `);
-               }
-            });
-         });
-      });
-};
- 
-//populate side bar w/ attractions by time
-module.exports.printAttractionsByTime = (arr)=>{
-   $('#descriptionArea').html('');
-   model.getParkData('areas')
-      .then(areas=>{
-         areas.forEach(function(area){
-            arr.forEach(function(attraction){
-              let attractionTimes = '';
-               if(attraction.area_id === area.id){
-                  if(attraction.times){ attractionTimes = attraction.times.join(', ');}
-                  let area_id = attraction.area_id;
-                     $('#descriptionArea').append(`
-                        <div class='attraction item${area_id}' id='${attraction.id}'>
-                       <p><b> ${attraction.name}</b> - 
-                       <span style='color:#${area.colorTheme}'>${area.name}</span></p>
-                        <p class='attrDescription' style='display:none'>
-                        ${attraction.description}` + 
-                        (attraction.times? `<br><br> <b>Start Times: ` + attractionTimes + `</b>`: '') + `
-                        <br><button class='itinerary' type='button'>Add to Itinerary</button>
-                        </p> </div>
-               `);
-               }
-            });
-         });
-      });
-};
-
  
 module.exports.highlightAreas = (list) =>{
-  for(let i = 1; i < 9; i++){
-    $(`#item${i}`).removeClass("highlight");
-  }
+  $(`.gridItem`).removeClass("highlight");    
   list.forEach( (area)=>{
     $(`#item${area}`).addClass("highlight");
   });
@@ -152,8 +89,12 @@ module.exports.clearInputs= (input) => {
 
   module.exports.printItinerary = (valuesArray)=>{
     $('#descriptionArea').html('');
+    $(`.gridItem`).removeClass("highlight");
+    module.exports.removeUnhighlight();
+    module.exports.removeLocation();
     let areasArray = [];
     let typesArray = [];
+    let listToHighlight = [];
     model.getParkData('areas')
        .then(areas=>{
           areas.forEach(function(area){
@@ -174,6 +115,8 @@ module.exports.clearInputs= (input) => {
              valuesArray.forEach(function(entry){
                let attractionTimes = '';
                if(attraction.id === +entry.attr_id){
+                listToHighlight.push(+attraction.area_id);
+                console.log('area_id: ',attraction.area_id);
                  if(attraction.times){ attractionTimes = attraction.times.join(', ');}
                  let area_id = attraction.area_id;
                  let type_id = attraction.type_id;
@@ -200,15 +143,11 @@ module.exports.clearInputs= (input) => {
                 }
              });
             });
+            console.log('test',listToHighlight);
+            module.exports.highlightAreas(listToHighlight);
           });
         };
        
-
-
-
-
-
-
 module.exports.printAttractionsFoSho = (attractionsArray, query)=>{
   $('#descriptionArea').html('');
   model.getParkData(query)
@@ -232,4 +171,9 @@ module.exports.printAttractionsFoSho = (attractionsArray, query)=>{
             });
         });
       });
+};
+
+module.exports.removeLocation = ()=>{
+  $(`.gridItem`).children('.gridCells').children().removeClass("cell-highlight");
+  $(`.gridItem`).children('p').removeClass("nameFade");
 };

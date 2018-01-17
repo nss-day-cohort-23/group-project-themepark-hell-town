@@ -56,7 +56,7 @@ module.exports.activateListeners = ()=>{
 };
 
 const getItinerary = ()=>{
-  removeLocation();
+  view.removeLocation();
   model.getParkData('itinerary')
     .then(ids=>{
       $.each(ids, function(entry){
@@ -95,7 +95,7 @@ const addToItinerary = function(){
 };
 
 const deleteFromItinerary = function(){
-  removeLocation();
+  view.removeLocation();
   let attractionToDeletedID = this.parentNode.parentNode.id;
   let testText = JSON.stringify(this.parentNode.parentNode.id);
   $.ajax({
@@ -112,7 +112,7 @@ const deleteFromItinerary = function(){
 module.exports.searchAttractionsByTime = () => {
   $(`.gridItem`).removeClass("highlight");
   view.removeUnhighlight();
-  removeLocation();
+  view.removeLocation();
   let attractionSchedule = [];
   let timeVal = model.formatTimes($('#time').val());
   let listToHighlight = [];
@@ -143,7 +143,7 @@ const searchAttractionsByName = (e)=>{
   $(`.gridItem`).removeClass("highlight");  
   view.removeUnhighlight();
   if(e.keyCode === 13 && ($('#searchInput').val() !== '')){
-    removeLocation();
+    view.removeLocation();
     let searchInput = $('#searchInput').val();
     model.getParkData('attractions')
       .then(attractions=>{
@@ -165,7 +165,7 @@ const searchAttractionsByName = (e)=>{
 const searchAttractionsByArea = function(e){
   $(`.gridItem`).removeClass("highlight");    
   view.removeUnhighlight();
-  removeLocation();
+  view.removeLocation();
 
   $(this).addClass("highlight");
   let id = $(this).attr('id').match(/\d+/)[0];
@@ -185,7 +185,7 @@ const searchAttractionsByType = function(){
     $(`#item${i}`).removeClass("highlight");
   }
   view.removeUnhighlight();
-  removeLocation();
+  view.removeLocation();
 
   let typeNum = $(this).val();
   if(typeNum !== ""){
@@ -211,7 +211,7 @@ const searchAttractionsById = function(attId){
     .then(attractions=>{
       attractions.forEach((attraction)=>{
         if (attraction.id === +attId){
-          removeLocation();
+          view.removeLocation();
           $(`#item${attraction.area_id}`).children('.gridCells')
             .children(`.location${attraction.location}`)
               .addClass("cell-highlight");
@@ -221,10 +221,7 @@ const searchAttractionsById = function(attId){
     });
 };
 
-const removeLocation = ()=>{
-  $(`.gridItem`).children('.gridCells').children().removeClass("cell-highlight");
-  $(`.gridItem`).children('p').removeClass("nameFade");
-};
+
 
 const removeReveal = ()=>{
   $('.easter').removeClass('reveal');
