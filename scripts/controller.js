@@ -41,7 +41,7 @@ module.exports.activateListeners = ()=>{
   $('#showItinerary').on("click",getItinerary);
   $(document).on("click", '.deleteFromItinerary', deleteFromItinerary);
 
-  //listeenr for attraction-type selector
+  // listener for attraction-type selector
   $('#typeSelect').change(searchAttractionsByType);
 
   
