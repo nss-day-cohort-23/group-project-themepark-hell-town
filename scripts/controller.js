@@ -52,6 +52,12 @@ module.exports.activateListeners = ()=>{
       trans.removeClass('reveal');
     }, 4000);
   });
+  $('.skullSpan').click(function(){
+    let show = $('.easter2').addClass('reveal2');
+    setTimeout(function () {
+      show.removeClass('reveal2');
+    }, 7000);
+  });
 
 };
 
